@@ -1,0 +1,17 @@
+{
+  "title": "GinZeH的小站",
+  "titleSize": "3.8rem",
+  "subtitle": [
+    "In Reddened Chrysalis, I Once Rest",
+    "From Shattered Sky, I Free Fall",
+    "Amidst Silenced Stars, I Deep Sleep",
+    "Upon Lighted Fyrefly, I Soon Gaze",
+    "From Undreamt Night, I Thence Shine",
+    "In Finalized Morrow, I Full Bloom"
+  ],
+  "subtitleSize": "1.5rem",
+  "typewriterEnable": true,
+  "typewriterSpeed": 100,
+  "typewriterDeleteSpeed": 50,
+  "typewriterPauseTime": 2000
+}

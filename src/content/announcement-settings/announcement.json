@@ -1,0 +1,9 @@
+{
+  "title": "公告",
+  "content": "欢迎来到我的博客",
+  "closable": false,
+  "linkEnable": true,
+  "linkText": "了解更多",
+  "linkUrl": "/about/",
+  "linkExternal": false
+}

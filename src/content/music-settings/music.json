@@ -1,0 +1,12 @@
+{
+  "showInNavbar": true,
+  "mode": "meting",
+  "volume": 0.7,
+  "playMode": "list",
+  "showLyrics": true,
+  "metingApi": "https://api.i-meto.com/meting/api?server=:server&type=:type&id=:id&r=:r",
+  "metingServer": "netease",
+  "metingType": "playlist",
+  "metingId": "10046455237",
+  "metingAuth": ""
+}
