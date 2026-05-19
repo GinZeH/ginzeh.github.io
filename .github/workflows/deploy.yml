@@ -33,6 +33,12 @@ jobs:
       - name: Install dependencies
         run: pnpm install --no-frozen-lockfile
       
+      - name: Build Tina CMS
+        run: pnpm tinacms build
+        env:
+          NEXT_PUBLIC_TINA_CLIENT_ID: fake-client-id
+          TINA_TOKEN: fake-token
+      
       - name: Build site
         run: pnpm run build
 
