@@ -3,8 +3,16 @@
   "subtitle": "TEST",
   "site_url": "https://ginzeh.github.io",
   "description": "GinZeH的个人博客",
+  "keywords": [],
   "themeHue": 165,
+  "themeFixed": false,
   "defaultMode": "system",
+  "pageWidth": 100,
   "cardBorder": false,
+  "showLastModified": true,
+  "categoryBar": true,
+  "postListDefaultMode": "list",
+  "paginationPostsPerPage": 10,
+  "pageFriends": true,
   "pageGuestbook": false
 }
