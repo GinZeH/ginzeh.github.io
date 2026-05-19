@@ -35,12 +35,6 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
-      - name: Build Tina CMS
-        run: pnpm tinacms build
-        env:
-          NEXT_PUBLIC_TINA_CLIENT_ID: fake-client-id
-          TINA_TOKEN: fake-token
-
       - name: Build Astro site
         run: pnpm astro build
 
