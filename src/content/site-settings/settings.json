@@ -4,8 +4,9 @@
   "site_url": "https://ginzeh.github.io",
   "description": "GinZeH的个人博客",
   "keywords": [],
-  "themeHue": 165,
-  "themeFixed": false,
+  "themeColor": "#00d4aa",
+  "themeHue": 225,
+  "themeFixed": true,
   "defaultMode": "system",
   "pageWidth": 100,
   "cardBorder": false,
@@ -14,5 +15,5 @@
   "postListDefaultMode": "list",
   "paginationPostsPerPage": 10,
   "pageFriends": true,
-  "pageGuestbook": false
+  "pageGuestbook": true
 }

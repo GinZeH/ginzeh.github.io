@@ -340,12 +340,24 @@ export default defineConfig({
             list: true,
           },
           {
+            type: "string",
+            name: "themeColor",
+            label: "主题颜色",
+            ui: {
+              component: "color",
+            },
+            default: "#00d4aa",
+          },
+          {
             type: "number",
             name: "themeHue",
             label: "主题色相",
             min: 0,
             max: 360,
             default: 165,
+            ui: {
+              description: "0-360，与主题颜色同步",
+            },
           },
           {
             type: "boolean",
@@ -618,6 +630,14 @@ export default defineConfig({
             min: 500,
             max: 10000,
           },
+          {
+            type: "image",
+            name: "customBackground",
+            label: "自定义背景图片",
+            ui: {
+              description: "上传自定义背景图片，会覆盖默认壁纸",
+            },
+          },
         ],
       },
       {
@@ -773,6 +793,556 @@ export default defineConfig({
             type: "string",
             name: "metingAuth",
             label: "认证 Token",
+          },
+        ],
+      },
+      {
+        name: "gallerySettings",
+        label: "相册设置",
+        path: "src/content/gallery-settings",
+        format: "json",
+        ui: {
+          allowedActions: {
+            create: false,
+            delete: false,
+          },
+        },
+        fields: [
+          {
+            type: "number",
+            name: "columnWidth",
+            label: "列宽度(px)",
+            default: 240,
+            min: 150,
+            max: 400,
+          },
+          {
+            type: "object",
+            name: "albums",
+            label: "相册列表",
+            list: true,
+            fields: [
+              {
+                type: "string",
+                name: "id",
+                label: "相册ID",
+                required: true,
+                ui: {
+                  description: "用于URL路径，只能包含小写字母、数字和连字符",
+                },
+              },
+              {
+                type: "string",
+                name: "name",
+                label: "相册名称",
+                required: true,
+              },
+              {
+                type: "string",
+                name: "description",
+                label: "相册描述",
+                ui: {
+                  component: "textarea",
+                },
+              },
+              {
+                type: "string",
+                name: "location",
+                label: "拍摄地点",
+              },
+              {
+                type: "datetime",
+                name: "date",
+                label: "日期",
+                ui: {
+                  dateFormat: "YYYY-MM-DD",
+                  timeFormat: false,
+                },
+              },
+              {
+                type: "string",
+                name: "tags",
+                label: "标签",
+                list: true,
+              },
+              {
+                type: "image",
+                name: "cover",
+                label: "封面图片",
+              },
+              {
+                type: "string",
+                name: "password",
+                label: "访问密码",
+                ui: {
+                  description: "留空则不加密",
+                },
+              },
+              {
+                type: "string",
+                name: "passwordHint",
+                label: "密码提示",
+              },
+              {
+                type: "string",
+                name: "photos",
+                label: "图片URL列表",
+                list: true,
+                ui: {
+                  description: "每行一个图片URL，支持 jpg/png/webp/avif/gif 格式",
+                },
+              },
+            ],
+          },
+        ],
+      },
+      {
+        name: "effectsConfig",
+        label: "特效配置",
+        path: "src/content/effects-settings",
+        format: "json",
+        ui: {
+          allowedActions: {
+            create: false,
+            delete: false,
+          },
+        },
+        fields: [
+          {
+            type: "boolean",
+            name: "sakuraEnable",
+            label: "启用樱花特效",
+            default: false,
+          },
+          {
+            type: "boolean",
+            name: "sakuraSwitchable",
+            label: "允许用户切换",
+            default: true,
+          },
+          {
+            type: "number",
+            name: "sakuraNum",
+            label: "樱花数量",
+            default: 21,
+            min: 1,
+            max: 100,
+          },
+          {
+            type: "number",
+            name: "sakuraLimitTimes",
+            label: "越界限制次数(-1为无限)",
+            default: -1,
+            min: -1,
+            max: 100,
+          },
+        ],
+      },
+      {
+        name: "sidebarConfig",
+        label: "侧边栏配置",
+        path: "src/content/sidebar-settings",
+        format: "json",
+        ui: {
+          allowedActions: {
+            create: false,
+            delete: false,
+          },
+        },
+        fields: [
+          {
+            type: "boolean",
+            name: "enable",
+            label: "启用侧边栏",
+            default: true,
+          },
+          {
+            type: "string",
+            name: "position",
+            label: "侧边栏位置",
+            options: [
+              { label: "仅左侧", value: "left" },
+              { label: "仅右侧", value: "right" },
+              { label: "双侧", value: "both" },
+            ],
+            default: "both",
+          },
+          {
+            type: "string",
+            name: "tabletSidebar",
+            label: "平板端显示",
+            options: [
+              { label: "左侧", value: "left" },
+              { label: "右侧", value: "right" },
+            ],
+            default: "left",
+          },
+          {
+            type: "boolean",
+            name: "showProfile",
+            label: "显示个人资料",
+            default: true,
+          },
+          {
+            type: "boolean",
+            name: "showAnnouncement",
+            label: "显示公告",
+            default: true,
+          },
+          {
+            type: "boolean",
+            name: "showMusic",
+            label: "显示音乐播放器",
+            default: true,
+          },
+          {
+            type: "boolean",
+            name: "showCategories",
+            label: "显示分类",
+            default: true,
+          },
+          {
+            type: "boolean",
+            name: "showTags",
+            label: "显示标签",
+            default: true,
+          },
+          {
+            type: "boolean",
+            name: "showStats",
+            label: "显示站点统计",
+            default: true,
+          },
+          {
+            type: "boolean",
+            name: "showCalendar",
+            label: "显示日历",
+            default: true,
+          },
+          {
+            type: "boolean",
+            name: "showToc",
+            label: "显示目录",
+            default: true,
+          },
+        ],
+      },
+      {
+        name: "commentConfig",
+        label: "评论配置",
+        path: "src/content/comment-settings",
+        format: "json",
+        ui: {
+          allowedActions: {
+            create: false,
+            delete: false,
+          },
+        },
+        fields: [
+          {
+            type: "string",
+            name: "type",
+            label: "评论系统",
+            options: [
+              { label: "不启用", value: "none" },
+              { label: "Twikoo", value: "twikoo" },
+              { label: "Waline", value: "waline" },
+              { label: "Giscus", value: "giscus" },
+              { label: "Disqus", value: "disqus" },
+              { label: "Artalk", value: "artalk" },
+            ],
+            default: "none",
+          },
+          {
+            type: "boolean",
+            name: "visitorCount",
+            label: "显示访问量",
+            default: true,
+          },
+          {
+            type: "string",
+            name: "twikooEnvId",
+            label: "Twikoo 环境ID",
+          },
+          {
+            type: "string",
+            name: "walineServerURL",
+            label: "Waline 服务地址",
+          },
+          {
+            type: "string",
+            name: "giscusRepo",
+            label: "Giscus 仓库",
+          },
+          {
+            type: "string",
+            name: "giscusRepoId",
+            label: "Giscus 仓库ID",
+          },
+          {
+            type: "string",
+            name: "giscusCategory",
+            label: "Giscus 分类",
+          },
+          {
+            type: "string",
+            name: "giscusCategoryId",
+            label: "Giscus 分类ID",
+          },
+        ],
+      },
+      {
+        name: "sponsorConfig",
+        label: "赞助配置",
+        path: "src/content/sponsor-settings",
+        format: "json",
+        ui: {
+          allowedActions: {
+            create: false,
+            delete: false,
+          },
+        },
+        fields: [
+          {
+            type: "string",
+            name: "title",
+            label: "页面标题",
+          },
+          {
+            type: "string",
+            name: "description",
+            label: "页面描述",
+            ui: {
+              component: "textarea",
+            },
+          },
+          {
+            type: "string",
+            name: "usage",
+            label: "赞助用途",
+            ui: {
+              component: "textarea",
+            },
+          },
+          {
+            type: "boolean",
+            name: "showSponsorsList",
+            label: "显示赞助者列表",
+            default: true,
+          },
+          {
+            type: "boolean",
+            name: "showButtonInPost",
+            label: "文章底部显示赞助按钮",
+            default: true,
+          },
+          {
+            type: "object",
+            name: "methods",
+            label: "赞助方式",
+            list: true,
+            fields: [
+              {
+                type: "string",
+                name: "name",
+                label: "名称",
+                required: true,
+              },
+              {
+                type: "string",
+                name: "icon",
+                label: "图标",
+              },
+              {
+                type: "image",
+                name: "qrCode",
+                label: "收款码",
+              },
+              {
+                type: "string",
+                name: "link",
+                label: "链接地址",
+              },
+              {
+                type: "string",
+                name: "description",
+                label: "描述",
+              },
+              {
+                type: "boolean",
+                name: "enabled",
+                label: "启用",
+                default: true,
+              },
+            ],
+          },
+        ],
+      },
+      {
+        name: "wallpaperSettings",
+        label: "壁纸设置",
+        path: "src/content/wallpaper-settings",
+        format: "json",
+        ui: {
+          allowedActions: {
+            create: false,
+            delete: false,
+          },
+        },
+        fields: [
+          {
+            type: "string",
+            name: "mode",
+            label: "壁纸模式",
+            options: [
+              { label: "Banner模式", value: "banner" },
+              { label: "全屏模式", value: "fullscreen" },
+            ],
+            default: "banner",
+          },
+          {
+            type: "boolean",
+            name: "switchable",
+            label: "允许切换壁纸",
+            default: true,
+          },
+          {
+            type: "number",
+            name: "opacity",
+            label: "覆盖层透明度",
+            min: 0,
+            max: 1,
+            step: 0.1,
+            default: 0.8,
+          },
+          {
+            type: "number",
+            name: "blur",
+            label: "模糊程度(px)",
+            min: 0,
+            max: 50,
+            default: 10,
+          },
+          {
+            type: "number",
+            name: "cardOpacity",
+            label: "卡片透明度",
+            min: 0,
+            max: 1,
+            step: 0.1,
+            default: 0.5,
+          },
+          {
+            type: "number",
+            name: "dimOpacity",
+            label: "全局暗度",
+            min: 0,
+            max: 1,
+            step: 0.1,
+            default: 0.2,
+          },
+          {
+            type: "boolean",
+            name: "wavesDesktop",
+            label: "桌面端波浪效果",
+            default: true,
+          },
+          {
+            type: "boolean",
+            name: "wavesMobile",
+            label: "移动端波浪效果",
+            default: true,
+          },
+          {
+            type: "boolean",
+            name: "wavesSwitchable",
+            label: "波浪效果可切换",
+            default: true,
+          },
+          {
+            type: "boolean",
+            name: "gradientDesktop",
+            label: "桌面端渐变效果",
+            default: true,
+          },
+          {
+            type: "boolean",
+            name: "gradientMobile",
+            label: "移动端渐变效果",
+            default: true,
+          },
+          {
+            type: "string",
+            name: "gradientHeight",
+            label: "渐变高度",
+            default: "15vh",
+          },
+          {
+            type: "boolean",
+            name: "gradientSwitchable",
+            label: "渐变效果可切换",
+            default: true,
+          },
+          {
+            type: "boolean",
+            name: "carouselEnable",
+            label: "启用轮播",
+            default: false,
+          },
+          {
+            type: "number",
+            name: "carouselInterval",
+            label: "轮播间隔(毫秒)",
+            min: 2000,
+            max: 30000,
+            step: 1000,
+            default: 5000,
+          },
+          {
+            type: "boolean",
+            name: "carouselSwitchable",
+            label: "轮播可切换",
+            default: false,
+          },
+          {
+            type: "string",
+            label: "用户权限控制",
+            name: "userPermissions",
+            ui: {
+              component: "group",
+            },
+            fields: [
+              {
+                type: "boolean",
+                name: "allowUserChangeTheme",
+                label: "允许用户修改主题色",
+                default: true,
+              },
+              {
+                type: "boolean",
+                name: "allowUserChangeWallpaper",
+                label: "允许用户切换壁纸",
+                default: true,
+              },
+              {
+                type: "boolean",
+                name: "allowUserChangeMode",
+                label: "允许用户切换明暗模式",
+                default: true,
+              },
+              {
+                type: "boolean",
+                name: "allowUserChangeLayout",
+                label: "允许用户切换布局",
+                default: true,
+              },
+              {
+                type: "boolean",
+                name: "allowUserChangeEffects",
+                label: "允许用户切换特效",
+                default: true,
+              },
+            ],
           },
         ],
       },

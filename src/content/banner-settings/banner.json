@@ -13,5 +13,6 @@
   "typewriterEnable": true,
   "typewriterSpeed": 100,
   "typewriterDeleteSpeed": 50,
-  "typewriterPauseTime": 2000
+  "typewriterPauseTime": 2000,
+  "customBackground": ""
 }

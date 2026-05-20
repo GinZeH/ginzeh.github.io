@@ -1,9 +1,10 @@
 import type { BackgroundWallpaperConfig } from "@/types/config";
 import bannerSettings from "../content/banner-settings/banner.json";
+import wallpaperSettings from "../content/wallpaper-settings/wallpaper.json";
 
 export const backgroundWallpaper: BackgroundWallpaperConfig = {
-	mode: "banner",
-	switchable: true,
+	mode: wallpaperSettings.mode || "banner",
+	switchable: wallpaperSettings.switchable || true,
 	src: {
 		desktop: [
 			"assets/images/DesktopWallpaper/d1.avif",
@@ -23,7 +24,7 @@ export const backgroundWallpaper: BackgroundWallpaperConfig = {
 		],
 	},
 	common: {
-		dimOpacity: 0.2,
+		dimOpacity: wallpaperSettings.dimOpacity || 0.2,
 		homeText: {
 			enable: true,
 			switchable: true,
@@ -52,26 +53,26 @@ export const backgroundWallpaper: BackgroundWallpaperConfig = {
 		},
 		waves: {
 			enable: {
-				desktop: true,
-				mobile: true,
+				desktop: wallpaperSettings.wavesDesktop || true,
+				mobile: wallpaperSettings.wavesMobile || true,
 			},
-			switchable: true,
+			switchable: wallpaperSettings.wavesSwitchable || true,
 		},
 		gradient: {
 			enable: {
-				desktop: true,
-				mobile: true,
+				desktop: wallpaperSettings.gradientDesktop || true,
+				mobile: wallpaperSettings.gradientMobile || true,
 			},
-			height: "15vh",
-			switchable: true,
+			height: wallpaperSettings.gradientHeight || "15vh",
+			switchable: wallpaperSettings.gradientSwitchable || true,
 		},
 	},
 	banner: {
 		position: "0% 20%",
 		carousel: {
-			enable: false,
-			interval: 5000,
-			switchable: false,
+			enable: wallpaperSettings.carouselEnable || false,
+			interval: wallpaperSettings.carouselInterval || 5000,
+			switchable: wallpaperSettings.carouselSwitchable || false,
 		},
 	},
 	overlay: {
@@ -81,11 +82,19 @@ export const backgroundWallpaper: BackgroundWallpaperConfig = {
 			cardOpacity: true,
 		},
 		zIndex: -1,
-		opacity: 0.8,
-		blur: 10,
-		cardOpacity: 0.5,
+		opacity: wallpaperSettings.opacity || 0.8,
+		blur: wallpaperSettings.blur || 10,
+		cardOpacity: wallpaperSettings.cardOpacity || 0.5,
 	},
 	fullscreen: {
 		position: "center",
 	},
+};
+
+export const userPermissions = {
+	allowUserChangeTheme: wallpaperSettings.allowUserChangeTheme || true,
+	allowUserChangeWallpaper: wallpaperSettings.allowUserChangeWallpaper || true,
+	allowUserChangeMode: wallpaperSettings.allowUserChangeMode || true,
+	allowUserChangeLayout: wallpaperSettings.allowUserChangeLayout || true,
+	allowUserChangeEffects: wallpaperSettings.allowUserChangeEffects || true,
 };

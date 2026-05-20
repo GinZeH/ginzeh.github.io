@@ -1,0 +1,13 @@
+{
+  "enable": true,
+  "position": "both",
+  "tabletSidebar": "left",
+  "showProfile": true,
+  "showAnnouncement": true,
+  "showMusic": true,
+  "showCategories": true,
+  "showTags": true,
+  "showStats": true,
+  "showCalendar": true,
+  "showToc": true
+}

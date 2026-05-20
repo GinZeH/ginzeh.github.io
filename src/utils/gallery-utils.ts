@@ -18,17 +18,17 @@ function withBase(assetPath: string): string {
 	return url(normalizedPath);
 }
 
-/**
- * 扫描相册目录中的所有图片文件
- */
-export function scanAlbumPhotos(albumId: string): string[] {
+export function scanAlbumPhotos(albumId: string, albumPhotos?: string[]): string[] {
+	if (albumPhotos && albumPhotos.length > 0) {
+		return albumPhotos.map((p) => withBase(p));
+	}
+
 	const dir = path.join(process.cwd(), "public", "gallery", albumId);
 	if (!fs.existsSync(dir)) return [];
 	const files = fs
 		.readdirSync(dir)
 		.filter((f) => /\.(jpe?g|png|webp|avif|gif)$/i.test(f))
 		.sort();
-	// 将 cover.* 排到第一位
 	const coverIdx = files.findIndex((f) => /^cover\./i.test(f));
 	if (coverIdx > 0) {
 		const [coverFile] = files.splice(coverIdx, 1);
@@ -36,7 +36,6 @@ export function scanAlbumPhotos(albumId: string): string[] {
 	}
 	const localPhotos = files.map((f) => withBase(`/gallery/${albumId}/${f}`));
 
-	// 读取 urls.txt 中的远程图片 URL
 	const urlsFile = path.join(dir, "urls.txt");
 	let remotePhotos: string[] = [];
 	if (fs.existsSync(urlsFile)) {
@@ -50,10 +49,6 @@ export function scanAlbumPhotos(albumId: string): string[] {
 	return [...localPhotos, ...remotePhotos];
 }
 
-/**
- * 获取相册封面图
- * 优先级：手动指定 > cover.* 文件 > 第一张图片
- */
 export function getAlbumCover(album: GalleryAlbum, photos: string[]): string {
 	if (album.cover) return withBase(album.cover);
 	const coverFile = photos.find((p) => /\/cover\./i.test(p));
