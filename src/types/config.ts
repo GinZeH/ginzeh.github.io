@@ -755,6 +755,7 @@ export type GalleryAlbum = {
 	cover?: string; // 手动指定封面（可选，省略则自动取 cover.* 或第一张）
 	password?: string; // 加密密码（非空时启用加密）
 	passwordHint?: string; // 密码提示
+	photos?: string[]; // 图片URL列表（TinaCMS管理）
 };
 
 // 相册配置

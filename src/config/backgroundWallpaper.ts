@@ -3,7 +3,7 @@ import bannerSettings from "../content/banner-settings/banner.json";
 import wallpaperSettings from "../content/wallpaper-settings/wallpaper.json";
 
 export const backgroundWallpaper: BackgroundWallpaperConfig = {
-	mode: wallpaperSettings.mode || "banner",
+	mode: (wallpaperSettings.mode as "banner" | "fullscreen" | "overlay" | "none") || "banner",
 	switchable: wallpaperSettings.switchable || true,
 	src: {
 		desktop: [
