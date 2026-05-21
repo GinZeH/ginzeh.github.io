@@ -4,7 +4,7 @@
   "tabletSidebar": "left",
   "showProfile": true,
   "showAnnouncement": true,
-  "showMusic": true,
+  "showMusic": false,
   "showCategories": true,
   "showTags": true,
   "showStats": true,

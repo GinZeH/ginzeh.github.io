@@ -5,9 +5,9 @@ export const sponsorConfig: SponsorConfig = {
 	title: sponsorSettings.title || "",
 	description: sponsorSettings.description || "",
 	usage: sponsorSettings.usage || "您的赞助将用于服务器维护、内容创作和功能开发，帮助我持续提供优质内容。",
-	showSponsorsList: sponsorSettings.showSponsorsList || true,
+	showSponsorsList: sponsorSettings.showSponsorsList ?? true,
 	showComment: true,
-	showButtonInPost: sponsorSettings.showButtonInPost || true,
+	showButtonInPost: sponsorSettings.showButtonInPost ?? true,
 	methods: sponsorSettings.methods || [
 		{
 			name: "支付宝",

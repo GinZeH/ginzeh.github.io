@@ -420,12 +420,33 @@ export default defineConfig({
             default: "list",
           },
           {
-            type: "string",
+            type: "boolean",
+            name: "showLayoutSwitchInNavbar",
+            label: "显示布局切换图标在导航栏",
+            default: true,
+          },
+          {
+            type: "boolean",
+            name: "showWallpaperModeInDisplaySettings",
+            label: "在显示设置中显示壁纸模式切换",
+            default: true,
+          },
+          {
+            type: "boolean",
+            name: "showWallpaperSettingsInDisplaySettings",
+            label: "在显示设置中显示壁纸设置",
+            default: true,
+          },
+          {
+            type: "boolean",
+            name: "showDisplaySettingsIconInNavbar",
+            label: "在导航栏显示画笔画板图标",
+            default: true,
+          },
+          {
+            type: "displayOnly",
             label: "文章设置",
             name: "postSettingsSection",
-            ui: {
-              component: "label",
-            },
           },
           {
             type: "number",
@@ -525,12 +546,9 @@ export default defineConfig({
             default: "https://api.bgm.tv",
           },
           {
-            type: "string",
+            type: "displayOnly",
             label: "站点基础设置",
             name: "siteBasicSection",
-            ui: {
-              component: "label",
-            },
           },
           {
             type: "string",
@@ -561,12 +579,9 @@ export default defineConfig({
             default: "Asia/Shanghai",
           },
           {
-            type: "string",
+            type: "displayOnly",
             label: "页面开关",
             name: "pageSection",
-            ui: {
-              component: "label",
-            },
           },
           {
             type: "boolean",
@@ -581,12 +596,9 @@ export default defineConfig({
             default: true,
           },
           {
-            type: "string",
+            type: "displayOnly",
             label: "统计分析",
             name: "analyticsSection",
-            ui: {
-              component: "label",
-            },
           },
           {
             type: "string",
@@ -613,12 +625,9 @@ export default defineConfig({
             default: "https://cloud.umami.is/script.js",
           },
           {
-            type: "string",
+            type: "displayOnly",
             label: "图片优化",
             name: "imageOptimizationSection",
-            ui: {
-              component: "label",
-            },
           },
           {
             type: "string",
@@ -667,14 +676,119 @@ export default defineConfig({
         },
         fields: [
           {
+            type: "displayOnly",
+            label: "Logo设置",
+            name: "logoSection",
+          },
+          {
+            type: "string",
+            name: "logo_type",
+            nameOverride: "logo.type",
+            label: "Logo类型",
+            options: [
+              { label: "图标", value: "icon" },
+              { label: "本地图片", value: "image" },
+              { label: "网络图片", value: "url" },
+            ],
+            default: "image",
+          },
+          {
+            type: "string",
+            name: "logo_value",
+            nameOverride: "logo.value",
+            label: "Logo值",
+            ui: {
+              description: "图标名称、本地图片路径或网络图片URL",
+            },
+            default: "assets/images/firefly.png",
+          },
+          {
+            type: "string",
+            name: "logo_alt",
+            nameOverride: "logo.alt",
+            label: "Logo替代文本",
+            default: "Site Logo",
+          },
+          {
+            type: "displayOnly",
+            label: "外观设置",
+            name: "appearanceSection",
+          },
+          {
             type: "string",
             name: "title",
             label: "导航栏标题",
+            ui: {
+              description: "留空则使用站点标题",
+            },
+          },
+          {
+            type: "boolean",
+            name: "widthFull",
+            label: "全屏宽度",
+            default: false,
+          },
+          {
+            type: "string",
+            name: "menuAlign",
+            label: "菜单对齐",
+            options: [
+              { label: "居中", value: "center" },
+              { label: "左对齐", value: "left" },
+            ],
+            default: "center",
+          },
+          {
+            type: "boolean",
+            name: "followTheme",
+            label: "跟随主题色",
+            default: false,
+          },
+          {
+            type: "boolean",
+            name: "stickyNavbar",
+            label: "固定导航栏",
+            default: true,
+          },
+          {
+            type: "displayOnly",
+            label: "透明效果",
+            name: "transparentSection",
+          },
+          {
+            type: "string",
+            name: "transparentMode",
+            label: "透明模式",
+            options: [
+              { label: "半透明", value: "semi" },
+              { label: "全透明", value: "full" },
+              { label: "滚动时显示", value: "semifull" },
+            ],
+            default: "semi",
+          },
+          {
+            type: "boolean",
+            name: "enableBlur",
+            label: "启用毛玻璃",
+            default: true,
+          },
+          {
+            type: "number",
+            name: "blur",
+            label: "模糊程度",
+            min: 0,
+            max: 50,
+            default: 5,
+          },
+          {
+            type: "displayOnly",
+            label: "自定义链接",
+            name: "linksSection",
           },
           {
             type: "object",
             name: "customLinks",
-            label: "自定义链接",
+            label: "自定义链接列表",
             list: true,
             ui: {
               description: "添加自定义导航链接",
@@ -1353,12 +1467,9 @@ export default defineConfig({
             default: true,
           },
           {
-            type: "string",
+            type: "displayOnly",
             label: "Twikoo配置",
             name: "twikooSection",
-            ui: {
-              component: "label",
-            },
           },
           {
             type: "string",
@@ -1378,12 +1489,9 @@ export default defineConfig({
             default: "https://cdn.jsdelivr.net/npm/twikoo@1.7.9/dist/twikoo.min.js",
           },
           {
-            type: "string",
+            type: "displayOnly",
             label: "Waline配置",
             name: "walineSection",
-            ui: {
-              component: "label",
-            },
           },
           {
             type: "string",
@@ -1403,12 +1511,9 @@ export default defineConfig({
             default: "enable",
           },
           {
-            type: "string",
+            type: "displayOnly",
             label: "Artalk配置",
             name: "artalkSection",
-            ui: {
-              component: "label",
-            },
           },
           {
             type: "string",
@@ -1422,12 +1527,9 @@ export default defineConfig({
             default: "zh-CN",
           },
           {
-            type: "string",
+            type: "displayOnly",
             label: "Giscus配置",
             name: "giscusSection",
-            ui: {
-              component: "label",
-            },
           },
           {
             type: "string",
@@ -1485,12 +1587,9 @@ export default defineConfig({
             label: "Giscus 语言",
           },
           {
-            type: "string",
+            type: "displayOnly",
             label: "Disqus配置",
             name: "disqusSection",
-            ui: {
-              component: "label",
-            },
           },
           {
             type: "string",
@@ -1717,12 +1816,9 @@ export default defineConfig({
             default: false,
           },
           {
-            type: "string",
             label: "用户权限控制",
             name: "userPermissionsSection",
-            ui: {
-              component: "label",
-            },
+            type: "displayOnly",
           },
           {
             type: "boolean",

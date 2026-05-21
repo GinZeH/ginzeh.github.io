@@ -2,23 +2,6 @@
   "title": "友情链接",
   "description": "我的朋友们",
   "friends": [
-    {
-      "title": "夏夜流萤",
-      "imgurl": "https://weavatar.com/avatar/d252655d40d6874417a720bad0a6c5f77f8f6a1fd2f882f8f338402dc37e4190?s=640",
-      "desc": "飞萤之火自无梦的长夜亮起",
-      "siteurl": "https://blog.cuteleaf.cn",
-      "tags": ["Blog"],
-      "weight": 10,
-      "enabled": true
-    },
-    {
-      "title": "Astro",
-      "imgurl": "https://avatars.githubusercontent.com/u/44914786?v=4&s=640",
-      "desc": "The web framework for content-driven websites",
-      "siteurl": "https://astro.build",
-      "tags": ["Framework"],
-      "weight": 8,
-      "enabled": true
-    }
+    {}
   ]
 }

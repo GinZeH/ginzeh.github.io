@@ -89,7 +89,7 @@ const defaultOverlayBlur = getDefaultOverlayBlur();
 let overlayCardOpacity = $state(getDefaultOverlayCardOpacity());
 const defaultOverlayCardOpacity = getDefaultOverlayCardOpacity();
 
-const isWallpaperSwitchable = backgroundWallpaper.switchable ?? true;
+const isWallpaperSwitchable = (backgroundWallpaper.switchable ?? true) && (siteConfig.displaySettings?.showWallpaperMode ?? true);
 const allowLayoutSwitch = siteConfig.postListLayout.allowSwitch;
 let effectiveDefaultLayout = $derived(
 	isMobileWidth ? mobileDefaultLayout : defaultLayout,
@@ -115,10 +115,12 @@ const isBannerCarouselSwitchable =
 const isSakuraSwitchable = sakuraConfig?.switchable ?? false;
 // 是否有任何横幅设置可显示（后续添加新设置时在此处添加条件）
 const hasBannerSettings =
+	(siteConfig.displaySettings?.showWallpaperSettings ?? true) && (
 	isWavesSwitchable ||
 	isGradientSwitchable ||
 	isBannerTitleSwitchable ||
-	isBannerCarouselSwitchable;
+	isBannerCarouselSwitchable
+);
 const overlaySwitchableConfig =
 	backgroundWallpaper.overlay?.switchable ?? false;
 const isOverlaySettingsSwitchable =

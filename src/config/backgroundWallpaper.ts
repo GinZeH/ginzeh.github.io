@@ -3,8 +3,8 @@ import bannerSettings from "../content/banner-settings/banner.json";
 import wallpaperSettings from "../content/wallpaper-settings/wallpaper.json";
 
 export const backgroundWallpaper: BackgroundWallpaperConfig = {
-	mode: (wallpaperSettings.mode as "banner" | "fullscreen" | "overlay" | "none") || "banner",
-	switchable: wallpaperSettings.switchable || true,
+	mode: (wallpaperSettings.mode as "banner" | "fullscreen" | "overlay" | "none") ?? "banner",
+	switchable: wallpaperSettings.switchable ?? true,
 	src: {
 		desktop: [
 			"assets/images/DesktopWallpaper/d1.avif",
@@ -53,26 +53,26 @@ export const backgroundWallpaper: BackgroundWallpaperConfig = {
 		},
 		waves: {
 			enable: {
-				desktop: wallpaperSettings.wavesDesktop || true,
-				mobile: wallpaperSettings.wavesMobile || true,
+				desktop: wallpaperSettings.wavesDesktop ?? true,
+				mobile: wallpaperSettings.wavesMobile ?? true,
 			},
-			switchable: wallpaperSettings.wavesSwitchable || true,
+			switchable: wallpaperSettings.wavesSwitchable ?? true,
 		},
 		gradient: {
 			enable: {
-				desktop: wallpaperSettings.gradientDesktop || true,
-				mobile: wallpaperSettings.gradientMobile || true,
+				desktop: wallpaperSettings.gradientDesktop ?? true,
+				mobile: wallpaperSettings.gradientMobile ?? true,
 			},
 			height: wallpaperSettings.gradientHeight || "15vh",
-			switchable: wallpaperSettings.gradientSwitchable || true,
+			switchable: wallpaperSettings.gradientSwitchable ?? true,
 		},
 	},
 	banner: {
 		position: "0% 20%",
 		carousel: {
-			enable: wallpaperSettings.carouselEnable || false,
+			enable: wallpaperSettings.carouselEnable ?? false,
 			interval: wallpaperSettings.carouselInterval || 5000,
-			switchable: wallpaperSettings.carouselSwitchable || false,
+			switchable: wallpaperSettings.carouselSwitchable ?? false,
 		},
 	},
 	overlay: {
@@ -92,9 +92,9 @@ export const backgroundWallpaper: BackgroundWallpaperConfig = {
 };
 
 export const userPermissions = {
-	allowUserChangeTheme: wallpaperSettings.allowUserChangeTheme || true,
-	allowUserChangeWallpaper: wallpaperSettings.allowUserChangeWallpaper || true,
-	allowUserChangeMode: wallpaperSettings.allowUserChangeMode || true,
-	allowUserChangeLayout: wallpaperSettings.allowUserChangeLayout || true,
-	allowUserChangeEffects: wallpaperSettings.allowUserChangeEffects || true,
+	allowUserChangeTheme: wallpaperSettings.allowUserChangeTheme ?? true,
+	allowUserChangeWallpaper: wallpaperSettings.allowUserChangeWallpaper ?? true,
+	allowUserChangeMode: wallpaperSettings.allowUserChangeMode ?? true,
+	allowUserChangeLayout: wallpaperSettings.allowUserChangeLayout ?? true,
+	allowUserChangeEffects: wallpaperSettings.allowUserChangeEffects ?? true,
 };

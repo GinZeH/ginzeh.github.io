@@ -2,8 +2,8 @@ import type { SakuraConfig } from "../types/config";
 import effectsSettings from "../content/effects-settings/effects.json";
 
 export const sakuraConfig: SakuraConfig = {
-	enable: effectsSettings.sakuraEnable || false,
-	switchable: effectsSettings.sakuraSwitchable || true,
+	enable: effectsSettings.sakuraEnable ?? false,
+	switchable: effectsSettings.sakuraSwitchable ?? true,
 	sakuraNum: effectsSettings.sakuraNum || 21,
 	limitTimes: effectsSettings.sakuraLimitTimes || -1,
 	size: {

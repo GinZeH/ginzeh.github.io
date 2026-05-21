@@ -18,13 +18,13 @@ export const siteConfig: SiteConfig = {
 	keywords: siteSettings.keywords || [],
 	themeColor: {
 		hue: siteSettings.themeHue,
-		fixed: siteSettings.themeFixed || false,
-		defaultMode: (siteSettings.defaultMode as "light" | "dark" | "system") || "system",
+		fixed: siteSettings.themeFixed ?? false,
+		defaultMode: (siteSettings.defaultMode as "light" | "dark" | "system") ?? "system",
 	},
 	pageWidth: siteSettings.pageWidth || 100,
 	card: {
-		border: siteSettings.cardBorder || false,
-		followTheme: siteSettings.cardFollowTheme || false,
+		border: siteSettings.cardBorder ?? false,
+		followTheme: siteSettings.cardFollowTheme ?? false,
 	},
 	favicon: [
 		{
@@ -46,34 +46,39 @@ export const siteConfig: SiteConfig = {
 	siteStartDate: siteSettings.siteStartDate || "2025-01-01",
 	timezone: siteSettings.timezone || "Asia/Shanghai",
 	rehypeCallouts: {
-		theme: (siteSettings.rehypeCalloutsTheme as "github" | "obsidian" | "vitepress") || "github",
+		theme: (siteSettings.rehypeCalloutsTheme as "github" | "obsidian" | "vitepress") ?? "github",
 	},
-	showLastModified: siteSettings.showLastModified || true,
+	showLastModified: siteSettings.showLastModified ?? true,
 	outdatedThreshold: siteSettings.outdatedThreshold || 30,
 	sharePoster: siteSettings.sharePoster !== false,
-	generateOgImages: siteSettings.generateOgImages || false,
+	generateOgImages: siteSettings.generateOgImages ?? false,
 	bangumi: {
 		userId: siteSettings.bangumiSubjectId || "",
 		categoryOrder: ["anime", "book", "music", "game"],
 	},
 	pages: {
-		friends: siteSettings.pageFriends || true,
-		sponsor: siteSettings.pageSponsor || true,
-		guestbook: siteSettings.pageGuestbook || true,
-		bangumi: siteSettings.pageBangumi || true,
-		gallery: siteSettings.pageGallery || true,
+		friends: siteSettings.pageFriends ?? true,
+		sponsor: siteSettings.pageSponsor ?? true,
+		guestbook: siteSettings.pageGuestbook ?? true,
+		bangumi: siteSettings.pageBangumi ?? true,
+		gallery: siteSettings.pageGallery ?? true,
 	},
-	categoryBar: siteSettings.categoryBar || true,
+	categoryBar: siteSettings.categoryBar ?? true,
 	postListLayout: {
-		defaultMode: (siteSettings.postListDefaultMode as "list" | "grid") || "list",
+		defaultMode: (siteSettings.postListDefaultMode as "list" | "grid") ?? "list",
 		mobileDefaultMode: "list",
 		showTags: true,
 		descriptionLines: siteSettings.descriptionLines || 2,
-		allowSwitch: true,
+		allowSwitch: siteSettings.showLayoutSwitchInNavbar ?? true,
 		grid: {
-			masonry: siteSettings.gridMasonry || false,
+			masonry: siteSettings.gridMasonry ?? false,
 			columnWidth: siteSettings.gridColumnWidth || 320,
 		},
+	},
+	displaySettings: {
+		showWallpaperMode: siteSettings.showWallpaperModeInDisplaySettings ?? true,
+		showWallpaperSettings: siteSettings.showWallpaperSettingsInDisplaySettings ?? true,
+		showIconInNavbar: siteSettings.showDisplaySettingsIconInNavbar ?? true,
 	},
 	pagination: {
 		postsPerPage: siteSettings.paginationPostsPerPage || 10,
@@ -104,12 +109,12 @@ export const siteConfig: SiteConfig = {
 		},
 	},
 	imageOptimization: {
-		formats: (siteSettings.imageOptimizationFormats as "avif" | "webp" | "both") || "webp",
+		formats: (siteSettings.imageOptimizationFormats as "avif" | "webp" | "both") ?? "webp",
 		quality: siteSettings.imageOptimizationQuality || 85,
 		noReferrerDomains: siteSettings.imageOptimizationNoReferrerDomains || [],
 	},
 	font: fontConfig,
-	lang: (siteSettings.siteLang as "zh_CN" | "zh_TW" | "en" | "ja" | "ru") || "zh_CN",
+	lang: (siteSettings.siteLang as "zh_CN" | "zh_TW" | "en" | "ja" | "ru") ?? "zh_CN",
 };
 
 export const getLicenseConfig = () => licenseSettings;

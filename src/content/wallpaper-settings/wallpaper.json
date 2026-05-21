@@ -15,9 +15,9 @@
   "carouselEnable": false,
   "carouselInterval": 5000,
   "carouselSwitchable": false,
-  "allowUserChangeTheme": true,
-  "allowUserChangeWallpaper": true,
+  "allowUserChangeTheme": false,
+  "allowUserChangeWallpaper": false,
   "allowUserChangeMode": true,
-  "allowUserChangeLayout": true,
-  "allowUserChangeEffects": true
+  "allowUserChangeLayout": false,
+  "allowUserChangeEffects": false
 }

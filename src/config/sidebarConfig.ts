@@ -2,32 +2,32 @@ import type { SidebarLayoutConfig } from "../types/config";
 import sidebarSettings from "../content/sidebar-settings/sidebar.json";
 
 export const sidebarLayoutConfig: SidebarLayoutConfig = {
-	enable: sidebarSettings.enable || true,
-	position: (sidebarSettings.position as "left" | "right" | "both") || "both",
-	tabletSidebar: (sidebarSettings.tabletSidebar as "left" | "right") || "left",
+	enable: sidebarSettings.enable ?? true,
+	position: (sidebarSettings.position as "left" | "right" | "both") ?? "both",
+	tabletSidebar: (sidebarSettings.tabletSidebar as "left" | "right") ?? "left",
 	showBothSidebarsOnPostPage: true,
 	leftComponents: [
 		{
 			type: "profile",
-			enable: sidebarSettings.showProfile || true,
+			enable: sidebarSettings.showProfile ?? true,
 			position: "top",
 			showOnPostPage: true,
 		},
 		{
 			type: "announcement",
-			enable: sidebarSettings.showAnnouncement || true,
+			enable: sidebarSettings.showAnnouncement ?? true,
 			position: "top",
 			showOnPostPage: true,
 		},
 		{
 			type: "music",
-			enable: sidebarSettings.showMusic || true,
+			enable: sidebarSettings.showMusic ?? true,
 			position: "sticky",
 			showOnPostPage: true,
 		},
 		{
 			type: "categories",
-			enable: sidebarSettings.showCategories || true,
+			enable: sidebarSettings.showCategories ?? true,
 			position: "sticky",
 			showOnPostPage: true,
 			responsive: {
@@ -36,7 +36,7 @@ export const sidebarLayoutConfig: SidebarLayoutConfig = {
 		},
 		{
 			type: "tags",
-			enable: sidebarSettings.showTags || true,
+			enable: sidebarSettings.showTags ?? true,
 			position: "sticky",
 			showOnPostPage: true,
 			responsive: {
@@ -54,19 +54,19 @@ export const sidebarLayoutConfig: SidebarLayoutConfig = {
 	rightComponents: [
 		{
 			type: "stats",
-			enable: sidebarSettings.showStats || true,
+			enable: sidebarSettings.showStats ?? true,
 			position: "top",
 			showOnPostPage: true,
 		},
 		{
 			type: "calendar",
-			enable: sidebarSettings.showCalendar || true,
+			enable: sidebarSettings.showCalendar ?? true,
 			position: "sticky",
 			showOnPostPage: false,
 		},
 		{
 			type: "sidebarToc",
-			enable: sidebarSettings.showToc || true,
+			enable: sidebarSettings.showToc ?? true,
 			position: "sticky",
 			showOnPostPage: true,
 			showOnNonPostPage: false,
@@ -82,22 +82,22 @@ export const sidebarLayoutConfig: SidebarLayoutConfig = {
 	mobileBottomComponents: [
 		{
 			type: "profile",
-			enable: sidebarSettings.showProfile || true,
+			enable: sidebarSettings.showProfile ?? true,
 			showOnPostPage: true,
 		},
 		{
 			type: "announcement",
-			enable: sidebarSettings.showAnnouncement || true,
+			enable: sidebarSettings.showAnnouncement ?? true,
 			showOnPostPage: true,
 		},
 		{
 			type: "music",
-			enable: sidebarSettings.showMusic || true,
+			enable: sidebarSettings.showMusic ?? true,
 			showOnPostPage: true,
 		},
 		{
 			type: "categories",
-			enable: sidebarSettings.showCategories || true,
+			enable: sidebarSettings.showCategories ?? true,
 			showOnPostPage: true,
 			responsive: {
 				collapseThreshold: 5,
@@ -105,7 +105,7 @@ export const sidebarLayoutConfig: SidebarLayoutConfig = {
 		},
 		{
 			type: "tags",
-			enable: sidebarSettings.showTags || true,
+			enable: sidebarSettings.showTags ?? true,
 			showOnPostPage: true,
 			responsive: {
 				collapseThreshold: 20,
@@ -113,7 +113,7 @@ export const sidebarLayoutConfig: SidebarLayoutConfig = {
 		},
 		{
 			type: "stats",
-			enable: sidebarSettings.showStats || true,
+			enable: sidebarSettings.showStats ?? true,
 			showOnPostPage: true,
 		},
 	],

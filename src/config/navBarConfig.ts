@@ -53,7 +53,7 @@ const getDynamicNavBarConfig = (): NavBarConfig => {
 				name: link.name,
 				url: link.url,
 				icon: link.icon || "",
-				external: link.external || false,
+				external: link.external ?? false,
 			})),
 		});
 	}
@@ -66,3 +66,19 @@ export const navBarSearchConfig: NavBarSearchConfig = {
 };
 
 export const navBarConfig: NavBarConfig = getDynamicNavBarConfig();
+
+export const navBarAppearanceConfig = {
+	logo: navBarConfigData.logo || {
+		type: "image" as const,
+		value: "assets/images/firefly.png",
+		alt: "Site Logo",
+	},
+	title: navBarConfigData.title || "",
+	widthFull: navBarConfigData.widthFull ?? false,
+	menuAlign: navBarConfigData.menuAlign ?? "center",
+	followTheme: navBarConfigData.followTheme ?? false,
+	stickyNavbar: navBarConfigData.stickyNavbar ?? true,
+	transparentMode: navBarConfigData.transparentMode ?? "semi",
+	enableBlur: navBarConfigData.enableBlur ?? true,
+	blur: navBarConfigData.blur ?? 5,
+};

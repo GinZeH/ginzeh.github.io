@@ -1,5 +1,5 @@
 {
-  "showInNavbar": true,
+  "showInNavbar": false,
   "mode": "meting",
   "volume": 0.7,
   "playMode": "list",
