@@ -107,6 +107,13 @@ export type SiteConfig = {
 		};
 	};
 
+	// 显示设置配置
+	displaySettings?: {
+		showWallpaperMode?: boolean; // 在显示设置中显示壁纸模式切换
+		showWallpaperSettings?: boolean; // 在显示设置中显示壁纸设置
+		showIconInNavbar?: boolean; // 在导航栏显示画笔画板图标
+	};
+
 	// 分页配置
 	pagination: {
 		postsPerPage: number; // 每页显示的文章数量
