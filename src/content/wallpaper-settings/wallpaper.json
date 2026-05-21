@@ -1,9 +1,4 @@
 {
-  "allowUserChangeTheme": true,
-  "allowUserChangeWallpaper": true,
-  "allowUserChangeMode": true,
-  "allowUserChangeLayout": true,
-  "allowUserChangeEffects": true,
   "mode": "banner",
   "switchable": true,
   "opacity": 0.8,
@@ -17,7 +12,12 @@
   "gradientMobile": true,
   "gradientHeight": "15vh",
   "gradientSwitchable": true,
-  "carouselEnable": true,
-  "carouselInterval": 1000,
-  "carouselSwitchable": false
+  "carouselEnable": false,
+  "carouselInterval": 5000,
+  "carouselSwitchable": false,
+  "allowUserChangeTheme": true,
+  "allowUserChangeWallpaper": true,
+  "allowUserChangeMode": true,
+  "allowUserChangeLayout": true,
+  "allowUserChangeEffects": true
 }

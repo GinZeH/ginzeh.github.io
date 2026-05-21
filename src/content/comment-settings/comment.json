@@ -2,9 +2,22 @@
   "type": "none",
   "visitorCount": true,
   "twikooEnvId": "https://twikoo.vercel.app",
+  "twikooLang": "zh-CN",
+  "twikooJsUrl": "https://cdn.jsdelivr.net/npm/twikoo@1.7.9/dist/twikoo.min.js",
   "walineServerURL": "https://waline.vercel.app",
+  "walineLang": "zh-CN",
+  "walineLogin": "enable",
+  "artalkServer": "",
+  "artalkLocale": "zh-CN",
   "giscusRepo": "",
   "giscusRepoId": "",
   "giscusCategory": "",
-  "giscusCategoryId": ""
+  "giscusCategoryId": "",
+  "giscusMapping": "title",
+  "giscusStrict": "0",
+  "giscusReactionsEnabled": "1",
+  "giscusEmitMetadata": "0",
+  "giscusInputPosition": "bottom",
+  "giscusLang": "",
+  "disqusShortname": ""
 }

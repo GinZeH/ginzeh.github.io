@@ -1,0 +1,26 @@
+{
+  "title": "",
+  "customLinks": [
+    {
+      "name": "GitHub",
+      "url": "https://github.com/CuteLeaf/Firefly",
+      "icon": "fa7-brands:github",
+      "external": true,
+      "order": 1
+    },
+    {
+      "name": "Gitee",
+      "url": "https://gitee.com/CuteLeaf/Firefly",
+      "icon": "fa7-brands:gitee",
+      "external": true,
+      "order": 2
+    },
+    {
+      "name": "QQ交流群",
+      "url": "https://qm.qq.com/q/ZGsFa8qX2G",
+      "icon": "fa7-brands:qq",
+      "external": true,
+      "order": 3
+    }
+  ]
+}

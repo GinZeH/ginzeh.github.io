@@ -1,6 +1,14 @@
 import type { SiteConfig } from "@/types/config";
 import { fontConfig } from "./fontConfig";
 import siteSettings from "../content/site-settings/settings.json";
+import licenseSettings from "../content/license-config/license.json";
+import footerSettings from "../content/footer-config/footer.json";
+import fontSettings from "../content/font-config/font.json";
+import pioSettings from "../content/pio-config/pio.json";
+import adSettings from "../content/ad-config/ad.json";
+import coverImageSettings from "../content/cover-image-config/coverImage.json";
+import plantumlSettings from "../content/plantuml-config/plantuml.json";
+import expressiveCodeSettings from "../content/expressive-code-config/expressiveCode.json";
 
 export const siteConfig: SiteConfig = {
 	title: siteSettings.title,
@@ -15,8 +23,8 @@ export const siteConfig: SiteConfig = {
 	},
 	pageWidth: siteSettings.pageWidth || 100,
 	card: {
-		border: siteSettings.cardBorder || true,
-		followTheme: false,
+		border: siteSettings.cardBorder || false,
+		followTheme: siteSettings.cardFollowTheme || false,
 	},
 	favicon: [
 		{
@@ -35,47 +43,47 @@ export const siteConfig: SiteConfig = {
 		followTheme: false,
 		stickyNavbar: true,
 	},
-	siteStartDate: "2025-01-01",
-	timezone: "Asia/Shanghai",
+	siteStartDate: siteSettings.siteStartDate || "2025-01-01",
+	timezone: siteSettings.timezone || "Asia/Shanghai",
 	rehypeCallouts: {
-		theme: "github",
+		theme: (siteSettings.rehypeCalloutsTheme as "github" | "obsidian" | "vitepress") || "github",
 	},
 	showLastModified: siteSettings.showLastModified || true,
-	outdatedThreshold: 30,
-	sharePoster: true,
-	generateOgImages: false,
+	outdatedThreshold: siteSettings.outdatedThreshold || 30,
+	sharePoster: siteSettings.sharePoster !== false,
+	generateOgImages: siteSettings.generateOgImages || false,
 	bangumi: {
-		userId: "1143164",
+		userId: siteSettings.bangumiSubjectId || "",
 		categoryOrder: ["anime", "book", "music", "game"],
 	},
 	pages: {
 		friends: siteSettings.pageFriends || true,
-		sponsor: true,
+		sponsor: siteSettings.pageSponsor || true,
 		guestbook: siteSettings.pageGuestbook || true,
-		bangumi: true,
-		gallery: true,
+		bangumi: siteSettings.pageBangumi || true,
+		gallery: siteSettings.pageGallery || true,
 	},
 	categoryBar: siteSettings.categoryBar || true,
 	postListLayout: {
 		defaultMode: (siteSettings.postListDefaultMode as "list" | "grid") || "list",
 		mobileDefaultMode: "list",
 		showTags: true,
-		descriptionLines: 2,
+		descriptionLines: siteSettings.descriptionLines || 2,
 		allowSwitch: true,
 		grid: {
-			masonry: false,
-			columnWidth: 320,
+			masonry: siteSettings.gridMasonry || false,
+			columnWidth: siteSettings.gridColumnWidth || 320,
 		},
 	},
 	pagination: {
 		postsPerPage: siteSettings.paginationPostsPerPage || 10,
 	},
 	analytics: {
-		googleAnalyticsId: "",
-		microsoftClarityId: "",
+		googleAnalyticsId: siteSettings.googleAnalyticsId || "",
+		microsoftClarityId: siteSettings.microsoftClarityId || "",
 		umamiAnalytics: {
-			websiteId: "",
-			scriptUrl: "https://cloud.umami.is/script.js",
+			websiteId: siteSettings.umamiWebsiteId || "",
+			scriptUrl: siteSettings.umamiScriptUrl || "https://cloud.umami.is/script.js",
 			trackOutboundLinks: true,
 			collectWebVitals: false,
 			relpays: {
@@ -96,10 +104,19 @@ export const siteConfig: SiteConfig = {
 		},
 	},
 	imageOptimization: {
-		formats: "webp",
-		quality: 85,
-		noReferrerDomains: [],
+		formats: (siteSettings.imageOptimizationFormats as "avif" | "webp" | "both") || "webp",
+		quality: siteSettings.imageOptimizationQuality || 85,
+		noReferrerDomains: siteSettings.imageOptimizationNoReferrerDomains || [],
 	},
 	font: fontConfig,
-	lang: "zh_CN",
+	lang: (siteSettings.siteLang as "zh_CN" | "zh_TW" | "en" | "ja" | "ru") || "zh_CN",
 };
+
+export const getLicenseConfig = () => licenseSettings;
+export const getFooterConfig = () => footerSettings;
+export const getFontConfig = () => fontSettings;
+export const getPioConfig = () => pioSettings;
+export const getAdConfig = () => adSettings;
+export const getCoverImageConfig = () => coverImageSettings;
+export const getPlantumlConfig = () => plantumlSettings;
+export const getExpressiveCodeConfig = () => expressiveCodeSettings;

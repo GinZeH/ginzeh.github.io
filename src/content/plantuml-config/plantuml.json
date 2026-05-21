@@ -1,0 +1,5 @@
+{
+  "enable": true,
+  "serverUrl": "https://www.plantuml.com/plantuml",
+  "outputFormat": "svg"
+}

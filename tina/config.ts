@@ -301,6 +301,7 @@ export default defineConfig({
         label: "站点设置",
         path: "src/content/site-settings",
         format: "json",
+        isSingleton: true,
         ui: {
           allowedActions: {
             create: false,
@@ -392,6 +393,12 @@ export default defineConfig({
           },
           {
             type: "boolean",
+            name: "cardFollowTheme",
+            label: "卡片跟随主题",
+            default: false,
+          },
+          {
+            type: "boolean",
             name: "showLastModified",
             label: "显示上次编辑时间",
             default: true,
@@ -413,6 +420,73 @@ export default defineConfig({
             default: "list",
           },
           {
+            type: "string",
+            label: "文章设置",
+            name: "postSettingsSection",
+            ui: {
+              component: "label",
+            },
+          },
+          {
+            type: "number",
+            name: "descriptionLines",
+            label: "文章列表描述行数",
+            min: 0,
+            max: 10,
+            default: 2,
+            ui: {
+              description: "设置文章摘要在列表中显示的行数，设为0则禁用截断",
+            },
+          },
+          {
+            type: "boolean",
+            name: "gridMasonry",
+            label: "启用瀑布流布局",
+            default: false,
+          },
+          {
+            type: "number",
+            name: "gridColumnWidth",
+            label: "网格列宽(px)",
+            min: 200,
+            max: 500,
+            default: 320,
+          },
+          {
+            type: "string",
+            name: "rehypeCalloutsTheme",
+            label: "提示块主题",
+            options: [
+              { label: "GitHub", value: "github" },
+              { label: "Obsidian", value: "obsidian" },
+              { label: "VitePress", value: "vitepress" },
+            ],
+            default: "github",
+          },
+          {
+            type: "number",
+            name: "outdatedThreshold",
+            label: "文章过期天数阈值",
+            min: 1,
+            max: 365,
+            default: 30,
+          },
+          {
+            type: "boolean",
+            name: "sharePoster",
+            label: "启用分享海报",
+            default: true,
+          },
+          {
+            type: "boolean",
+            name: "generateOgImages",
+            label: "生成OpenGraph图片",
+            default: false,
+            ui: {
+              description: "启用会增加构建时间",
+            },
+          },
+          {
             type: "number",
             name: "paginationPostsPerPage",
             label: "每页文章数",
@@ -430,6 +504,216 @@ export default defineConfig({
             label: "留言板页面",
             default: true,
           },
+          {
+            type: "boolean",
+            name: "pageBangumi",
+            label: "番组计划页面",
+            default: true,
+          },
+          {
+            type: "string",
+            name: "bangumiSubjectId",
+            label: "Bangumi Subject ID",
+            ui: {
+              description: "Bangumi番组计划的Subject ID",
+            },
+          },
+          {
+            type: "string",
+            name: "bangumiApi",
+            label: "Bangumi API地址",
+            default: "https://api.bgm.tv",
+          },
+          {
+            type: "string",
+            label: "站点基础设置",
+            name: "siteBasicSection",
+            ui: {
+              component: "label",
+            },
+          },
+          {
+            type: "string",
+            name: "siteLang",
+            label: "网站语言",
+            options: [
+              { label: "简体中文", value: "zh_CN" },
+              { label: "繁体中文", value: "zh_TW" },
+              { label: "英文", value: "en" },
+              { label: "日文", value: "ja" },
+              { label: "俄文", value: "ru" },
+            ],
+            default: "zh_CN",
+          },
+          {
+            type: "string",
+            name: "siteStartDate",
+            label: "建站日期",
+            default: "2025-01-01",
+            ui: {
+              description: "格式：YYYY-MM-DD",
+            },
+          },
+          {
+            type: "string",
+            name: "timezone",
+            label: "时区",
+            default: "Asia/Shanghai",
+          },
+          {
+            type: "string",
+            label: "页面开关",
+            name: "pageSection",
+            ui: {
+              component: "label",
+            },
+          },
+          {
+            type: "boolean",
+            name: "pageGallery",
+            label: "相册页面",
+            default: true,
+          },
+          {
+            type: "boolean",
+            name: "pageSponsor",
+            label: "赞助页面",
+            default: true,
+          },
+          {
+            type: "string",
+            label: "统计分析",
+            name: "analyticsSection",
+            ui: {
+              component: "label",
+            },
+          },
+          {
+            type: "string",
+            name: "googleAnalyticsId",
+            label: "Google Analytics ID",
+            ui: {
+              description: "UA-XXXXXXXXX-X 或 G-XXXXXXXXXX 格式",
+            },
+          },
+          {
+            type: "string",
+            name: "microsoftClarityId",
+            label: "Microsoft Clarity ID",
+          },
+          {
+            type: "string",
+            name: "umamiWebsiteId",
+            label: "Umami Website ID",
+          },
+          {
+            type: "string",
+            name: "umamiScriptUrl",
+            label: "Umami 脚本地址",
+            default: "https://cloud.umami.is/script.js",
+          },
+          {
+            type: "string",
+            label: "图片优化",
+            name: "imageOptimizationSection",
+            ui: {
+              component: "label",
+            },
+          },
+          {
+            type: "string",
+            name: "imageOptimizationFormats",
+            label: "图片输出格式",
+            options: [
+              { label: "WebP", value: "webp" },
+              { label: "AVIF", value: "avif" },
+              { label: "两者都生成", value: "both" },
+            ],
+            default: "webp",
+          },
+          {
+            type: "number",
+            name: "imageOptimizationQuality",
+            label: "图片压缩质量",
+            min: 1,
+            max: 100,
+            default: 85,
+            ui: {
+              description: "推荐值：70-85",
+            },
+          },
+          {
+            type: "string",
+            name: "imageOptimizationNoReferrerDomains",
+            label: "防盗链域名",
+            list: true,
+            ui: {
+              description: "需要防盗链处理的域名，支持通配符*，如：i0.hdslb.com, *.bilibili.com",
+            },
+          },
+        ],
+      },
+      {
+        name: "navBarConfig",
+        label: "导航栏设置",
+        path: "src/content/nav-bar-config",
+        format: "json",
+        isSingleton: true,
+        ui: {
+          allowedActions: {
+            create: false,
+            delete: false,
+          },
+        },
+        fields: [
+          {
+            type: "string",
+            name: "title",
+            label: "导航栏标题",
+          },
+          {
+            type: "object",
+            name: "customLinks",
+            label: "自定义链接",
+            list: true,
+            ui: {
+              description: "添加自定义导航链接",
+            },
+            fields: [
+              {
+                type: "string",
+                name: "name",
+                label: "名称",
+                required: true,
+              },
+              {
+                type: "string",
+                name: "url",
+                label: "链接地址",
+                required: true,
+              },
+              {
+                type: "string",
+                name: "icon",
+                label: "图标",
+                ui: {
+                  description: "图标名称或URL",
+                },
+              },
+              {
+                type: "boolean",
+                name: "external",
+                label: "外部链接",
+                default: false,
+              },
+              {
+                type: "number",
+                name: "order",
+                label: "排序",
+                default: 0,
+              },
+            ],
+          },
         ],
       },
       {
@@ -437,6 +721,7 @@ export default defineConfig({
         label: "个人资料",
         path: "src/content/profile-settings",
         format: "json",
+        isSingleton: true,
         ui: {
           allowedActions: {
             create: false,
@@ -496,6 +781,7 @@ export default defineConfig({
         label: "友链设置",
         path: "src/content/friends-settings",
         format: "json",
+        isSingleton: true,
         ui: {
           allowedActions: {
             create: false,
@@ -568,6 +854,7 @@ export default defineConfig({
         label: "主页横幅",
         path: "src/content/banner-settings",
         format: "json",
+        isSingleton: true,
         ui: {
           allowedActions: {
             create: false,
@@ -645,6 +932,7 @@ export default defineConfig({
         label: "公告设置",
         path: "src/content/announcement-settings",
         format: "json",
+        isSingleton: true,
         ui: {
           allowedActions: {
             create: false,
@@ -702,6 +990,7 @@ export default defineConfig({
         label: "音乐播放器",
         path: "src/content/music-settings",
         format: "json",
+        isSingleton: true,
         ui: {
           allowedActions: {
             create: false,
@@ -801,6 +1090,7 @@ export default defineConfig({
         label: "相册设置",
         path: "src/content/gallery-settings",
         format: "json",
+        isSingleton: true,
         ui: {
           allowedActions: {
             create: false,
@@ -901,6 +1191,7 @@ export default defineConfig({
         label: "特效配置",
         path: "src/content/effects-settings",
         format: "json",
+        isSingleton: true,
         ui: {
           allowedActions: {
             create: false,
@@ -943,6 +1234,7 @@ export default defineConfig({
         label: "侧边栏配置",
         path: "src/content/sidebar-settings",
         format: "json",
+        isSingleton: true,
         ui: {
           allowedActions: {
             create: false,
@@ -1032,6 +1324,7 @@ export default defineConfig({
         label: "评论配置",
         path: "src/content/comment-settings",
         format: "json",
+        isSingleton: true,
         ui: {
           allowedActions: {
             create: false,
@@ -1061,8 +1354,36 @@ export default defineConfig({
           },
           {
             type: "string",
+            label: "Twikoo配置",
+            name: "twikooSection",
+            ui: {
+              component: "label",
+            },
+          },
+          {
+            type: "string",
             name: "twikooEnvId",
-            label: "Twikoo 环境ID",
+            label: "Twikoo 环境ID/后端地址",
+          },
+          {
+            type: "string",
+            name: "twikooLang",
+            label: "Twikoo 语言",
+            default: "zh-CN",
+          },
+          {
+            type: "string",
+            name: "twikooJsUrl",
+            label: "Twikoo JS 地址",
+            default: "https://cdn.jsdelivr.net/npm/twikoo@1.7.9/dist/twikoo.min.js",
+          },
+          {
+            type: "string",
+            label: "Waline配置",
+            name: "walineSection",
+            ui: {
+              component: "label",
+            },
           },
           {
             type: "string",
@@ -1071,8 +1392,47 @@ export default defineConfig({
           },
           {
             type: "string",
+            name: "walineLang",
+            label: "Waline 语言",
+            default: "zh-CN",
+          },
+          {
+            type: "string",
+            name: "walineLogin",
+            label: "Waline 登录模式",
+            default: "enable",
+          },
+          {
+            type: "string",
+            label: "Artalk配置",
+            name: "artalkSection",
+            ui: {
+              component: "label",
+            },
+          },
+          {
+            type: "string",
+            name: "artalkServer",
+            label: "Artalk 后端地址",
+          },
+          {
+            type: "string",
+            name: "artalkLocale",
+            label: "Artalk 语言",
+            default: "zh-CN",
+          },
+          {
+            type: "string",
+            label: "Giscus配置",
+            name: "giscusSection",
+            ui: {
+              component: "label",
+            },
+          },
+          {
+            type: "string",
             name: "giscusRepo",
-            label: "Giscus 仓库",
+            label: "Giscus 仓库 (owner/repo)",
           },
           {
             type: "string",
@@ -1082,12 +1442,60 @@ export default defineConfig({
           {
             type: "string",
             name: "giscusCategory",
-            label: "Giscus 分类",
+            label: "Giscus 讨论分类名称",
           },
           {
             type: "string",
             name: "giscusCategoryId",
             label: "Giscus 分类ID",
+          },
+          {
+            type: "string",
+            name: "giscusMapping",
+            label: "Giscus 映射方式",
+            default: "title",
+          },
+          {
+            type: "string",
+            name: "giscusStrict",
+            label: "Giscus 严格模式",
+            default: "0",
+          },
+          {
+            type: "string",
+            name: "giscusReactionsEnabled",
+            label: "Giscus 启用表情反应",
+            default: "1",
+          },
+          {
+            type: "string",
+            name: "giscusEmitMetadata",
+            label: "Giscus 发送元数据",
+            default: "0",
+          },
+          {
+            type: "string",
+            name: "giscusInputPosition",
+            label: "Giscus 输入框位置",
+            default: "bottom",
+          },
+          {
+            type: "string",
+            name: "giscusLang",
+            label: "Giscus 语言",
+          },
+          {
+            type: "string",
+            label: "Disqus配置",
+            name: "disqusSection",
+            ui: {
+              component: "label",
+            },
+          },
+          {
+            type: "string",
+            name: "disqusShortname",
+            label: "Disqus 短名称",
           },
         ],
       },
@@ -1096,6 +1504,7 @@ export default defineConfig({
         label: "赞助配置",
         path: "src/content/sponsor-settings",
         format: "json",
+        isSingleton: true,
         ui: {
           allowedActions: {
             create: false,
@@ -1183,6 +1592,7 @@ export default defineConfig({
         label: "壁纸设置",
         path: "src/content/wallpaper-settings",
         format: "json",
+        isSingleton: true,
         ui: {
           allowedActions: {
             create: false,
@@ -1197,6 +1607,8 @@ export default defineConfig({
             options: [
               { label: "Banner模式", value: "banner" },
               { label: "全屏模式", value: "fullscreen" },
+              { label: "叠加模式", value: "overlay" },
+              { label: "纯色模式", value: "none" },
             ],
             default: "banner",
           },
@@ -1307,42 +1719,416 @@ export default defineConfig({
           {
             type: "string",
             label: "用户权限控制",
-            name: "userPermissions",
+            name: "userPermissionsSection",
             ui: {
-              component: "group",
+              component: "label",
             },
+          },
+          {
+            type: "boolean",
+            name: "allowUserChangeTheme",
+            label: "允许用户修改主题色",
+            default: true,
+          },
+          {
+            type: "boolean",
+            name: "allowUserChangeWallpaper",
+            label: "允许用户切换壁纸",
+            default: true,
+          },
+          {
+            type: "boolean",
+            name: "allowUserChangeMode",
+            label: "允许用户切换明暗模式",
+            default: true,
+          },
+          {
+            type: "boolean",
+            name: "allowUserChangeLayout",
+            label: "允许用户切换布局",
+            default: true,
+          },
+          {
+            type: "boolean",
+            name: "allowUserChangeEffects",
+            label: "允许用户切换特效",
+            default: true,
+          },
+        ],
+      },
+      {
+        name: "navLinksSettings",
+        label: "导航链接",
+        path: "src/content/nav-links-settings",
+        format: "json",
+        isSingleton: true,
+        ui: {
+          allowedActions: {
+            create: false,
+            delete: false,
+          },
+        },
+        fields: [
+          {
+            type: "string",
+            name: "title",
+            label: "页面标题",
+            default: "导航链接",
+          },
+          {
+            type: "object",
+            name: "links",
+            label: "链接列表",
+            list: true,
             fields: [
               {
-                type: "boolean",
-                name: "allowUserChangeTheme",
-                label: "允许用户修改主题色",
-                default: true,
+                type: "string",
+                name: "name",
+                label: "名称",
+                required: true,
+              },
+              {
+                type: "string",
+                name: "url",
+                label: "链接地址",
+                required: true,
+              },
+              {
+                type: "string",
+                name: "icon",
+                label: "图标",
+                ui: {
+                  description: "图标名称或URL",
+                },
               },
               {
                 type: "boolean",
-                name: "allowUserChangeWallpaper",
-                label: "允许用户切换壁纸",
+                name: "newTab",
+                label: "新窗口打开",
                 default: true,
               },
               {
-                type: "boolean",
-                name: "allowUserChangeMode",
-                label: "允许用户切换明暗模式",
-                default: true,
-              },
-              {
-                type: "boolean",
-                name: "allowUserChangeLayout",
-                label: "允许用户切换布局",
-                default: true,
-              },
-              {
-                type: "boolean",
-                name: "allowUserChangeEffects",
-                label: "允许用户切换特效",
-                default: true,
+                type: "number",
+                name: "order",
+                label: "排序",
+                default: 0,
               },
             ],
+          },
+        ],
+      },
+      {
+        name: "licenseConfig",
+        label: "许可证设置",
+        path: "src/content/license-config",
+        format: "json",
+        isSingleton: true,
+        ui: {
+          allowedActions: {
+            create: false,
+            delete: false,
+          },
+        },
+        fields: [
+          {
+            type: "boolean",
+            name: "enable",
+            label: "启用许可证",
+            default: true,
+          },
+          {
+            type: "string",
+            name: "name",
+            label: "许可证名称",
+            default: "CC BY-NC-SA 4.0",
+          },
+          {
+            type: "string",
+            name: "url",
+            label: "许可证链接",
+            default: "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+          },
+        ],
+      },
+      {
+        name: "footerConfig",
+        label: "页脚设置",
+        path: "src/content/footer-config",
+        format: "json",
+        isSingleton: true,
+        ui: {
+          allowedActions: {
+            create: false,
+            delete: false,
+          },
+        },
+        fields: [
+          {
+            type: "boolean",
+            name: "enable",
+            label: "启用页脚HTML注入",
+            default: false,
+          },
+          {
+            type: "string",
+            name: "footerContent",
+            label: "页脚HTML内容",
+            ui: {
+              component: "textarea",
+              description: "直接输入HTML内容，如备案号等",
+            },
+          },
+        ],
+      },
+      {
+        name: "fontConfig",
+        label: "字体设置",
+        path: "src/content/font-config",
+        format: "json",
+        isSingleton: true,
+        ui: {
+          allowedActions: {
+            create: false,
+            delete: false,
+          },
+        },
+        fields: [
+          {
+            type: "boolean",
+            name: "enable",
+            label: "启用自定义字体",
+            default: false,
+          },
+          {
+            type: "boolean",
+            name: "preload",
+            label: "预加载字体",
+            default: true,
+          },
+          {
+            type: "string",
+            name: "selectedFont",
+            label: "选择字体",
+            options: [
+              { label: "系统字体", value: "system" },
+              { label: "Zen Maru Gothic", value: "zen-maru-gothic" },
+              { label: "Inter", value: "inter" },
+              { label: "MiSans Normal", value: "misans-normal" },
+              { label: "MiSans Regular", value: "misans-regular" },
+              { label: "MiSans Semibold", value: "misans-semibold" },
+            ],
+            default: "misans-regular",
+          },
+        ],
+      },
+      {
+        name: "pioConfig",
+        label: "看板娘设置",
+        path: "src/content/pio-config",
+        format: "json",
+        isSingleton: true,
+        ui: {
+          allowedActions: {
+            create: false,
+            delete: false,
+          },
+        },
+        fields: [
+          {
+            type: "boolean",
+            name: "enable",
+            label: "启用看板娘",
+            default: true,
+          },
+          {
+            type: "string",
+            name: "model",
+            label: "看板娘模型",
+            ui: {
+              description: "看板娘模型URL或路径",
+            },
+          },
+          {
+            type: "number",
+            name: "scale",
+            label: "缩放比例",
+            min: 0.5,
+            max: 2,
+            step: 0.1,
+            default: 1,
+          },
+          {
+            type: "string",
+            name: "position",
+            label: "位置",
+            options: [
+              { label: "左下", value: "bottom-left" },
+              { label: "右下", value: "bottom-right" },
+              { label: "左上", value: "top-left" },
+              { label: "右上", value: "top-right" },
+            ],
+            default: "bottom-left",
+          },
+        ],
+      },
+      {
+        name: "adConfig",
+        label: "广告设置",
+        path: "src/content/ad-config",
+        format: "json",
+        isSingleton: true,
+        ui: {
+          allowedActions: {
+            create: false,
+            delete: false,
+          },
+        },
+        fields: [
+          {
+            type: "boolean",
+            name: "enable",
+            label: "启用广告",
+            default: false,
+          },
+          {
+            type: "string",
+            name: "adCode",
+            label: "广告代码",
+            ui: {
+              component: "textarea",
+              description: "广告代码（如Google AdSense）",
+            },
+          },
+          {
+            type: "string",
+            name: "adPosition",
+            label: "广告位置",
+            options: [
+              { label: "文章顶部", value: "top" },
+              { label: "文章底部", value: "bottom" },
+              { label: "侧边栏", value: "sidebar" },
+            ],
+            default: "top",
+          },
+        ],
+      },
+      {
+        name: "coverImageConfig",
+        label: "文章封面图设置",
+        path: "src/content/cover-image-config",
+        format: "json",
+        isSingleton: true,
+        ui: {
+          allowedActions: {
+            create: false,
+            delete: false,
+          },
+        },
+        fields: [
+          {
+            type: "boolean",
+            name: "enableRandomCover",
+            label: "启用随机封面图",
+            default: false,
+          },
+          {
+            type: "string",
+            name: "randomCoverApi",
+            label: "随机封面图API",
+            ui: {
+              description: "API地址，返回随机图片",
+            },
+          },
+          {
+            type: "string",
+            name: "defaultCover",
+            label: "默认封面图",
+            ui: {
+              description: "默认封面图路径或URL",
+            },
+          },
+        ],
+      },
+      {
+        name: "plantumlConfig",
+        label: "PlantUML设置",
+        path: "src/content/plantuml-config",
+        format: "json",
+        isSingleton: true,
+        ui: {
+          allowedActions: {
+            create: false,
+            delete: false,
+          },
+        },
+        fields: [
+          {
+            type: "boolean",
+            name: "enable",
+            label: "启用PlantUML",
+            default: true,
+          },
+          {
+            type: "string",
+            name: "serverUrl",
+            label: "PlantUML服务器",
+            default: "https://www.plantuml.com/plantuml",
+          },
+          {
+            type: "string",
+            name: "outputFormat",
+            label: "输出格式",
+            options: [
+              { label: "PNG", value: "png" },
+              { label: "SVG", value: "svg" },
+            ],
+            default: "svg",
+          },
+        ],
+      },
+      {
+        name: "expressiveCodeConfig",
+        label: "代码高亮设置",
+        path: "src/content/expressive-code-config",
+        format: "json",
+        isSingleton: true,
+        ui: {
+          allowedActions: {
+            create: false,
+            delete: false,
+          },
+        },
+        fields: [
+          {
+            type: "string",
+            name: "theme",
+            label: "代码高亮主题",
+            options: [
+              { label: "Dracula", value: "dracula" },
+              { label: "GitHub Dark", value: "github-dark" },
+              { label: "GitHub Light", value: "github-light" },
+              { label: "Monokai", value: "monokai" },
+              { label: "Nord", value: "nord" },
+            ],
+            default: "github-dark",
+          },
+          {
+            type: "boolean",
+            name: "showLineNumbers",
+            label: "显示行号",
+            default: true,
+          },
+          {
+            type: "boolean",
+            name: "enableCopy",
+            label: "启用复制按钮",
+            default: true,
+          },
+          {
+            type: "boolean",
+            name: "enableWordWrap",
+            label: "启用换行",
+            default: true,
           },
         ],
       },

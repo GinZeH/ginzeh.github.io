@@ -1,0 +1,5 @@
+{
+  "enableRandomCover": true,
+  "randomCoverApi": "https://t.alcy.cc/pc",
+  "defaultCover": "assets/images/cover.avif"
+}

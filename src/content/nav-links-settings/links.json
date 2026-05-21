@@ -1,0 +1,40 @@
+{
+  "title": "导航链接",
+  "links": [
+    {
+      "name": "首页",
+      "url": "/",
+      "icon": "home",
+      "newTab": false,
+      "order": 1
+    },
+    {
+      "name": "文章",
+      "url": "/posts",
+      "icon": "article",
+      "newTab": false,
+      "order": 2
+    },
+    {
+      "name": "相册",
+      "url": "/gallery",
+      "icon": "image",
+      "newTab": false,
+      "order": 3
+    },
+    {
+      "name": "友链",
+      "url": "/friends",
+      "icon": "link",
+      "newTab": false,
+      "order": 4
+    },
+    {
+      "name": "关于",
+      "url": "/about",
+      "icon": "user",
+      "newTab": false,
+      "order": 5
+    }
+  ]
+}
