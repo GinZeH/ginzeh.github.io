@@ -1,10 +1,9 @@
 {
   "logo": {
     "type": "image",
-    "value": "assets/images/firefly.png",
+    "value": "/assets/images/firefly.png",
     "alt": "🍀"
   },
-  "logo.type": "icon",
   "title": "",
   "widthFull": false,
   "menuAlign": "center",

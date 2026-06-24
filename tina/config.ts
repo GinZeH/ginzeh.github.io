@@ -693,14 +693,13 @@ export default defineConfig({
             default: "image",
           },
           {
-            type: "string",
+            type: "image",
             name: "logo_value",
             nameOverride: "logo.value",
-            label: "Logo值",
+            label: "Logo图片",
             ui: {
-              description: "图标名称、本地图片路径或网络图片URL",
+              description: "选择或上传Logo图片",
             },
-            default: "assets/images/firefly.png",
           },
           {
             type: "string",
@@ -1288,12 +1287,12 @@ export default defineConfig({
                 label: "密码提示",
               },
               {
-                type: "string",
+                type: "image",
                 name: "photos",
-                label: "图片URL列表",
+                label: "图片列表",
                 list: true,
                 ui: {
-                  description: "每行一个图片URL，支持 jpg/png/webp/avif/gif 格式",
+                  description: "添加图片到相册",
                 },
               },
             ],
