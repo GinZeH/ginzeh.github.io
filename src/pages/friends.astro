@@ -1,5 +1,5 @@
 ---
-import { getEntry, render } from "astro:content";
+import { getEntry } from "astro:content";
 import Comment from "@components/comment/index.astro";
 import Markdown from "@components/common/Markdown.astro";
 import { Icon } from "astro-icon/components";
@@ -24,7 +24,8 @@ if (!friendsPost) {
 	throw new Error("friends page content not found");
 }
 
-const { Content } = await render(friendsPost);
+const content = friendsPost.data.body;
+const isHtmlContent = typeof content === "string" && content.startsWith("<");
 
 // 检查评论系统是否启用
 const isCommentEnabled =
@@ -154,9 +155,13 @@ const description =
 
   {friendsPageConfig.showCustomContent !== false && (
     <div class="mt-4 card-base z-10 px-9 py-6 relative w-full">
-      <Markdown class="">
-        <Content />
-      </Markdown>
+      {isHtmlContent ? (
+        <div set:html={content} />
+      ) : (
+        <Markdown class="">
+          {content}
+        </Markdown>
+      )}
     </div>
   )}
 

@@ -1,0 +1,8 @@
+{
+  "enableInPost": true,
+  "randomCoverImage": {
+    "enable": false,
+    "apis": [],
+    "fallback": ""
+  }
+}

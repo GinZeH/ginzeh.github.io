@@ -1,5 +1,10 @@
 {
   "enable": false,
+  "adImage": "assets/images/cover.avif",
+  "adLink": "#",
+  "adLinkExternal": true,
+  "adClosable": true,
+  "adDisplayCount": -1,
   "adCode": "",
   "adPosition": "top"
 }

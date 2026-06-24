@@ -1,0 +1,9 @@
+{
+  "darkTheme": "one-dark-pro",
+  "lightTheme": "one-light",
+  "pluginCollapsibleEnable": true,
+  "pluginCollapsibleLineThreshold": 15,
+  "pluginCollapsiblePreviewLines": 8,
+  "pluginCollapsibleDefaultCollapsed": true,
+  "pluginLanguageBadgeEnable": false
+}

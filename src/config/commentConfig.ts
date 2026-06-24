@@ -4,12 +4,12 @@ import commentSettings from "../content/comment-settings/comment.json";
 export const commentConfig: CommentConfig = {
 	type: (commentSettings.type as "none" | "twikoo" | "waline" | "giscus" | "disqus" | "artalk") ?? "none",
 	twikoo: {
-		envId: commentSettings.twikooEnvId || "https://twikoo.vercel.app",
+		envId: commentSettings.twikooEnvId ?? "https://twikoo.vercel.app",
 		lang: "zh-CN",
 		visitorCount: commentSettings.visitorCount ?? true,
 	},
 	waline: {
-		serverURL: commentSettings.walineServerURL || "https://waline.vercel.app",
+		serverURL: commentSettings.walineServerURL ?? "https://waline.vercel.app",
 		lang: "zh-CN",
 		emoji: [
 			"https://unpkg.com/@waline/emojis@1.4.0/weibo",
@@ -25,10 +25,10 @@ export const commentConfig: CommentConfig = {
 		visitorCount: commentSettings.visitorCount ?? true,
 	},
 	giscus: {
-		repo: commentSettings.giscusRepo || "CuteLeaf/Firefly",
-		repoId: commentSettings.giscusRepoId || "",
-		category: commentSettings.giscusCategory || "General",
-		categoryId: commentSettings.giscusCategoryId || "",
+		repo: commentSettings.giscusRepo ?? "CuteLeaf/Firefly",
+		repoId: commentSettings.giscusRepoId ?? "",
+		category: commentSettings.giscusCategory ?? "General",
+		categoryId: commentSettings.giscusCategoryId ?? "",
 		mapping: "title",
 		strict: "0",
 		reactionsEnabled: "1",

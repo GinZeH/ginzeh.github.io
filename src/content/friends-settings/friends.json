@@ -2,6 +2,19 @@
   "title": "友情链接",
   "description": "我的朋友们",
   "friends": [
-    {}
+    {
+      "title": "若木秋光",
+      "imgurl": "/assets/images/avatar.webp",
+      "desc": "一个普通的大学生",
+      "siteurl": "https://blog.rmqg.org/",
+      "enabled": true
+    },
+    {
+      "title": "RenAhsAcme",
+      "imgurl": "/assets/images/logo-avatar.webp",
+      "desc": "中山大学在读本科生，面向CS领域，对于人工智能安全，尤其是具身智能安全（Embodied AI Security）非常感兴趣。",
+      "siteurl": "https://renahsacme.cc/",
+      "enabled": true
+    }
   ]
 }

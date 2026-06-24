@@ -4,8 +4,8 @@ import effectsSettings from "../content/effects-settings/effects.json";
 export const sakuraConfig: SakuraConfig = {
 	enable: effectsSettings.sakuraEnable ?? false,
 	switchable: effectsSettings.sakuraSwitchable ?? true,
-	sakuraNum: effectsSettings.sakuraNum || 21,
-	limitTimes: effectsSettings.sakuraLimitTimes || -1,
+	sakuraNum: effectsSettings.sakuraNum ?? 21,
+	limitTimes: effectsSettings.sakuraLimitTimes ?? -1,
 	size: {
 		min: 0.5,
 		max: 1.1,

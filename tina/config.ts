@@ -166,6 +166,9 @@ export default defineConfig({
             name: "body",
             label: "正文",
             isBody: true,
+            ui: {
+              visualSelector: true,
+            },
           },
         ],
       },
@@ -264,6 +267,9 @@ export default defineConfig({
             name: "body",
             label: "正文",
             isBody: true,
+            ui: {
+              visualSelector: true,
+            },
           },
         ],
       },
@@ -301,7 +307,6 @@ export default defineConfig({
         label: "站点设置",
         path: "src/content/site-settings",
         format: "json",
-        isSingleton: true,
         ui: {
           allowedActions: {
             create: false,
@@ -420,33 +425,12 @@ export default defineConfig({
             default: "list",
           },
           {
-            type: "boolean",
-            name: "showLayoutSwitchInNavbar",
-            label: "显示布局切换图标在导航栏",
-            default: true,
-          },
-          {
-            type: "boolean",
-            name: "showWallpaperModeInDisplaySettings",
-            label: "在显示设置中显示壁纸模式切换",
-            default: true,
-          },
-          {
-            type: "boolean",
-            name: "showWallpaperSettingsInDisplaySettings",
-            label: "在显示设置中显示壁纸设置",
-            default: true,
-          },
-          {
-            type: "boolean",
-            name: "showDisplaySettingsIconInNavbar",
-            label: "在导航栏显示画笔画板图标",
-            default: true,
-          },
-          {
-            type: "displayOnly",
+            type: "string",
             label: "文章设置",
             name: "postSettingsSection",
+            ui: {
+              component: "label",
+            },
           },
           {
             type: "number",
@@ -546,9 +530,12 @@ export default defineConfig({
             default: "https://api.bgm.tv",
           },
           {
-            type: "displayOnly",
+            type: "string",
             label: "站点基础设置",
             name: "siteBasicSection",
+            ui: {
+              component: "label",
+            },
           },
           {
             type: "string",
@@ -579,9 +566,12 @@ export default defineConfig({
             default: "Asia/Shanghai",
           },
           {
-            type: "displayOnly",
+            type: "string",
             label: "页面开关",
             name: "pageSection",
+            ui: {
+              component: "label",
+            },
           },
           {
             type: "boolean",
@@ -596,9 +586,12 @@ export default defineConfig({
             default: true,
           },
           {
-            type: "displayOnly",
+            type: "string",
             label: "统计分析",
             name: "analyticsSection",
+            ui: {
+              component: "label",
+            },
           },
           {
             type: "string",
@@ -667,7 +660,6 @@ export default defineConfig({
         label: "导航栏设置",
         path: "src/content/nav-bar-config",
         format: "json",
-        isSingleton: true,
         ui: {
           allowedActions: {
             create: false,
@@ -676,118 +668,14 @@ export default defineConfig({
         },
         fields: [
           {
-            type: "displayOnly",
-            label: "Logo设置",
-            name: "logoSection",
-          },
-          {
-            type: "string",
-            name: "logo_type",
-            nameOverride: "logo.type",
-            label: "Logo类型",
-            options: [
-              { label: "图标", value: "icon" },
-              { label: "本地图片", value: "image" },
-              { label: "网络图片", value: "url" },
-            ],
-            default: "image",
-          },
-          {
-            type: "image",
-            name: "logo_value",
-            nameOverride: "logo.value",
-            label: "Logo图片",
-            ui: {
-              description: "选择或上传Logo图片",
-            },
-          },
-          {
-            type: "string",
-            name: "logo_alt",
-            nameOverride: "logo.alt",
-            label: "Logo替代文本",
-            default: "Site Logo",
-          },
-          {
-            type: "displayOnly",
-            label: "外观设置",
-            name: "appearanceSection",
-          },
-          {
             type: "string",
             name: "title",
             label: "导航栏标题",
-            ui: {
-              description: "留空则使用站点标题",
-            },
-          },
-          {
-            type: "boolean",
-            name: "widthFull",
-            label: "全屏宽度",
-            default: false,
-          },
-          {
-            type: "string",
-            name: "menuAlign",
-            label: "菜单对齐",
-            options: [
-              { label: "居中", value: "center" },
-              { label: "左对齐", value: "left" },
-            ],
-            default: "center",
-          },
-          {
-            type: "boolean",
-            name: "followTheme",
-            label: "跟随主题色",
-            default: false,
-          },
-          {
-            type: "boolean",
-            name: "stickyNavbar",
-            label: "固定导航栏",
-            default: true,
-          },
-          {
-            type: "displayOnly",
-            label: "透明效果",
-            name: "transparentSection",
-          },
-          {
-            type: "string",
-            name: "transparentMode",
-            label: "透明模式",
-            options: [
-              { label: "半透明", value: "semi" },
-              { label: "全透明", value: "full" },
-              { label: "滚动时显示", value: "semifull" },
-            ],
-            default: "semi",
-          },
-          {
-            type: "boolean",
-            name: "enableBlur",
-            label: "启用毛玻璃",
-            default: true,
-          },
-          {
-            type: "number",
-            name: "blur",
-            label: "模糊程度",
-            min: 0,
-            max: 50,
-            default: 5,
-          },
-          {
-            type: "displayOnly",
-            label: "自定义链接",
-            name: "linksSection",
           },
           {
             type: "object",
             name: "customLinks",
-            label: "自定义链接列表",
+            label: "自定义链接",
             list: true,
             ui: {
               description: "添加自定义导航链接",
@@ -834,7 +722,6 @@ export default defineConfig({
         label: "个人资料",
         path: "src/content/profile-settings",
         format: "json",
-        isSingleton: true,
         ui: {
           allowedActions: {
             create: false,
@@ -894,7 +781,6 @@ export default defineConfig({
         label: "友链设置",
         path: "src/content/friends-settings",
         format: "json",
-        isSingleton: true,
         ui: {
           allowedActions: {
             create: false,
@@ -967,7 +853,6 @@ export default defineConfig({
         label: "主页横幅",
         path: "src/content/banner-settings",
         format: "json",
-        isSingleton: true,
         ui: {
           allowedActions: {
             create: false,
@@ -1045,7 +930,6 @@ export default defineConfig({
         label: "公告设置",
         path: "src/content/announcement-settings",
         format: "json",
-        isSingleton: true,
         ui: {
           allowedActions: {
             create: false,
@@ -1103,7 +987,6 @@ export default defineConfig({
         label: "音乐播放器",
         path: "src/content/music-settings",
         format: "json",
-        isSingleton: true,
         ui: {
           allowedActions: {
             create: false,
@@ -1203,7 +1086,6 @@ export default defineConfig({
         label: "相册设置",
         path: "src/content/gallery-settings",
         format: "json",
-        isSingleton: true,
         ui: {
           allowedActions: {
             create: false,
@@ -1287,399 +1169,13 @@ export default defineConfig({
                 label: "密码提示",
               },
               {
-                type: "image",
+                type: "string",
                 name: "photos",
-                label: "图片列表",
+                label: "图片URL列表",
                 list: true,
                 ui: {
-                  description: "添加图片到相册",
+                  description: "每行一个图片URL，支持 jpg/png/webp/avif/gif 格式",
                 },
-              },
-            ],
-          },
-        ],
-      },
-      {
-        name: "effectsConfig",
-        label: "特效配置",
-        path: "src/content/effects-settings",
-        format: "json",
-        isSingleton: true,
-        ui: {
-          allowedActions: {
-            create: false,
-            delete: false,
-          },
-        },
-        fields: [
-          {
-            type: "boolean",
-            name: "sakuraEnable",
-            label: "启用樱花特效",
-            default: false,
-          },
-          {
-            type: "boolean",
-            name: "sakuraSwitchable",
-            label: "允许用户切换",
-            default: true,
-          },
-          {
-            type: "number",
-            name: "sakuraNum",
-            label: "樱花数量",
-            default: 21,
-            min: 1,
-            max: 100,
-          },
-          {
-            type: "number",
-            name: "sakuraLimitTimes",
-            label: "越界限制次数(-1为无限)",
-            default: -1,
-            min: -1,
-            max: 100,
-          },
-        ],
-      },
-      {
-        name: "sidebarConfig",
-        label: "侧边栏配置",
-        path: "src/content/sidebar-settings",
-        format: "json",
-        isSingleton: true,
-        ui: {
-          allowedActions: {
-            create: false,
-            delete: false,
-          },
-        },
-        fields: [
-          {
-            type: "boolean",
-            name: "enable",
-            label: "启用侧边栏",
-            default: true,
-          },
-          {
-            type: "string",
-            name: "position",
-            label: "侧边栏位置",
-            options: [
-              { label: "仅左侧", value: "left" },
-              { label: "仅右侧", value: "right" },
-              { label: "双侧", value: "both" },
-            ],
-            default: "both",
-          },
-          {
-            type: "string",
-            name: "tabletSidebar",
-            label: "平板端显示",
-            options: [
-              { label: "左侧", value: "left" },
-              { label: "右侧", value: "right" },
-            ],
-            default: "left",
-          },
-          {
-            type: "boolean",
-            name: "showProfile",
-            label: "显示个人资料",
-            default: true,
-          },
-          {
-            type: "boolean",
-            name: "showAnnouncement",
-            label: "显示公告",
-            default: true,
-          },
-          {
-            type: "boolean",
-            name: "showMusic",
-            label: "显示音乐播放器",
-            default: true,
-          },
-          {
-            type: "boolean",
-            name: "showCategories",
-            label: "显示分类",
-            default: true,
-          },
-          {
-            type: "boolean",
-            name: "showTags",
-            label: "显示标签",
-            default: true,
-          },
-          {
-            type: "boolean",
-            name: "showStats",
-            label: "显示站点统计",
-            default: true,
-          },
-          {
-            type: "boolean",
-            name: "showCalendar",
-            label: "显示日历",
-            default: true,
-          },
-          {
-            type: "boolean",
-            name: "showToc",
-            label: "显示目录",
-            default: true,
-          },
-        ],
-      },
-      {
-        name: "commentConfig",
-        label: "评论配置",
-        path: "src/content/comment-settings",
-        format: "json",
-        isSingleton: true,
-        ui: {
-          allowedActions: {
-            create: false,
-            delete: false,
-          },
-        },
-        fields: [
-          {
-            type: "string",
-            name: "type",
-            label: "评论系统",
-            options: [
-              { label: "不启用", value: "none" },
-              { label: "Twikoo", value: "twikoo" },
-              { label: "Waline", value: "waline" },
-              { label: "Giscus", value: "giscus" },
-              { label: "Disqus", value: "disqus" },
-              { label: "Artalk", value: "artalk" },
-            ],
-            default: "none",
-          },
-          {
-            type: "boolean",
-            name: "visitorCount",
-            label: "显示访问量",
-            default: true,
-          },
-          {
-            type: "displayOnly",
-            label: "Twikoo配置",
-            name: "twikooSection",
-          },
-          {
-            type: "string",
-            name: "twikooEnvId",
-            label: "Twikoo 环境ID/后端地址",
-          },
-          {
-            type: "string",
-            name: "twikooLang",
-            label: "Twikoo 语言",
-            default: "zh-CN",
-          },
-          {
-            type: "string",
-            name: "twikooJsUrl",
-            label: "Twikoo JS 地址",
-            default: "https://cdn.jsdelivr.net/npm/twikoo@1.7.9/dist/twikoo.min.js",
-          },
-          {
-            type: "displayOnly",
-            label: "Waline配置",
-            name: "walineSection",
-          },
-          {
-            type: "string",
-            name: "walineServerURL",
-            label: "Waline 服务地址",
-          },
-          {
-            type: "string",
-            name: "walineLang",
-            label: "Waline 语言",
-            default: "zh-CN",
-          },
-          {
-            type: "string",
-            name: "walineLogin",
-            label: "Waline 登录模式",
-            default: "enable",
-          },
-          {
-            type: "displayOnly",
-            label: "Artalk配置",
-            name: "artalkSection",
-          },
-          {
-            type: "string",
-            name: "artalkServer",
-            label: "Artalk 后端地址",
-          },
-          {
-            type: "string",
-            name: "artalkLocale",
-            label: "Artalk 语言",
-            default: "zh-CN",
-          },
-          {
-            type: "displayOnly",
-            label: "Giscus配置",
-            name: "giscusSection",
-          },
-          {
-            type: "string",
-            name: "giscusRepo",
-            label: "Giscus 仓库 (owner/repo)",
-          },
-          {
-            type: "string",
-            name: "giscusRepoId",
-            label: "Giscus 仓库ID",
-          },
-          {
-            type: "string",
-            name: "giscusCategory",
-            label: "Giscus 讨论分类名称",
-          },
-          {
-            type: "string",
-            name: "giscusCategoryId",
-            label: "Giscus 分类ID",
-          },
-          {
-            type: "string",
-            name: "giscusMapping",
-            label: "Giscus 映射方式",
-            default: "title",
-          },
-          {
-            type: "string",
-            name: "giscusStrict",
-            label: "Giscus 严格模式",
-            default: "0",
-          },
-          {
-            type: "string",
-            name: "giscusReactionsEnabled",
-            label: "Giscus 启用表情反应",
-            default: "1",
-          },
-          {
-            type: "string",
-            name: "giscusEmitMetadata",
-            label: "Giscus 发送元数据",
-            default: "0",
-          },
-          {
-            type: "string",
-            name: "giscusInputPosition",
-            label: "Giscus 输入框位置",
-            default: "bottom",
-          },
-          {
-            type: "string",
-            name: "giscusLang",
-            label: "Giscus 语言",
-          },
-          {
-            type: "displayOnly",
-            label: "Disqus配置",
-            name: "disqusSection",
-          },
-          {
-            type: "string",
-            name: "disqusShortname",
-            label: "Disqus 短名称",
-          },
-        ],
-      },
-      {
-        name: "sponsorConfig",
-        label: "赞助配置",
-        path: "src/content/sponsor-settings",
-        format: "json",
-        isSingleton: true,
-        ui: {
-          allowedActions: {
-            create: false,
-            delete: false,
-          },
-        },
-        fields: [
-          {
-            type: "string",
-            name: "title",
-            label: "页面标题",
-          },
-          {
-            type: "string",
-            name: "description",
-            label: "页面描述",
-            ui: {
-              component: "textarea",
-            },
-          },
-          {
-            type: "string",
-            name: "usage",
-            label: "赞助用途",
-            ui: {
-              component: "textarea",
-            },
-          },
-          {
-            type: "boolean",
-            name: "showSponsorsList",
-            label: "显示赞助者列表",
-            default: true,
-          },
-          {
-            type: "boolean",
-            name: "showButtonInPost",
-            label: "文章底部显示赞助按钮",
-            default: true,
-          },
-          {
-            type: "object",
-            name: "methods",
-            label: "赞助方式",
-            list: true,
-            fields: [
-              {
-                type: "string",
-                name: "name",
-                label: "名称",
-                required: true,
-              },
-              {
-                type: "string",
-                name: "icon",
-                label: "图标",
-              },
-              {
-                type: "image",
-                name: "qrCode",
-                label: "收款码",
-              },
-              {
-                type: "string",
-                name: "link",
-                label: "链接地址",
-              },
-              {
-                type: "string",
-                name: "description",
-                label: "描述",
-              },
-              {
-                type: "boolean",
-                name: "enabled",
-                label: "启用",
-                default: true,
               },
             ],
           },
@@ -1690,7 +1186,6 @@ export default defineConfig({
         label: "壁纸设置",
         path: "src/content/wallpaper-settings",
         format: "json",
-        isSingleton: true,
         ui: {
           allowedActions: {
             create: false,
@@ -1705,8 +1200,8 @@ export default defineConfig({
             options: [
               { label: "Banner模式", value: "banner" },
               { label: "全屏模式", value: "fullscreen" },
-              { label: "叠加模式", value: "overlay" },
-              { label: "纯色模式", value: "none" },
+              { label: "覆盖模式", value: "overlay" },
+              { label: "无壁纸", value: "none" },
             ],
             default: "banner",
           },
@@ -1815,9 +1310,12 @@ export default defineConfig({
             default: false,
           },
           {
-            label: "用户权限控制",
+            type: "string",
+            label: "用户权限设置",
             name: "userPermissionsSection",
-            type: "displayOnly",
+            ui: {
+              component: "label",
+            },
           },
           {
             type: "boolean",
@@ -1856,7 +1354,6 @@ export default defineConfig({
         label: "导航链接",
         path: "src/content/nav-links-settings",
         format: "json",
-        isSingleton: true,
         ui: {
           allowedActions: {
             create: false,
@@ -2019,9 +1516,8 @@ export default defineConfig({
       {
         name: "pioConfig",
         label: "看板娘设置",
-        path: "src/content/pio-config",
+        path: "src/content/pio-settings",
         format: "json",
-        isSingleton: true,
         ui: {
           allowedActions: {
             create: false,
@@ -2030,23 +1526,31 @@ export default defineConfig({
         },
         fields: [
           {
+            type: "string",
+            label: "Spine 看板娘配置",
+            name: "spineSection",
+            ui: {
+              component: "label",
+            },
+          },
+          {
             type: "boolean",
-            name: "enable",
-            label: "启用看板娘",
-            default: true,
+            name: "spineEnable",
+            label: "启用 Spine 看板娘",
+            default: false,
           },
           {
             type: "string",
-            name: "model",
-            label: "看板娘模型",
+            name: "spineModelPath",
+            label: "Spine 模型路径",
             ui: {
-              description: "看板娘模型URL或路径",
+              description: "例如: /pio/models/spine/firefly/1310.json",
             },
           },
           {
             type: "number",
-            name: "scale",
-            label: "缩放比例",
+            name: "spineScale",
+            label: "Spine 缩放比例",
             min: 0.5,
             max: 2,
             step: 0.1,
@@ -2054,8 +1558,8 @@ export default defineConfig({
           },
           {
             type: "string",
-            name: "position",
-            label: "位置",
+            name: "spinePositionCorner",
+            label: "Spine 位置",
             options: [
               { label: "左下", value: "bottom-left" },
               { label: "右下", value: "bottom-right" },
@@ -2064,6 +1568,113 @@ export default defineConfig({
             ],
             default: "bottom-left",
           },
+          {
+            type: "number",
+            name: "spineSizeWidth",
+            label: "Spine 宽度",
+            default: 200,
+          },
+          {
+            type: "number",
+            name: "spineSizeHeight",
+            label: "Spine 高度",
+            default: 300,
+          },
+          {
+            type: "boolean",
+            name: "spineResponsiveHideOnMobile",
+            label: "移动端隐藏 Spine",
+            default: true,
+          },
+          {
+            type: "string",
+            label: "Live2D 看板娘配置",
+            name: "live2dSection",
+            ui: {
+              component: "label",
+            },
+          },
+          {
+            type: "boolean",
+            name: "live2dEnable",
+            label: "启用 Live2D 看板娘",
+            default: false,
+          },
+          {
+            type: "string",
+            name: "live2dModelPath",
+            label: "Live2D 模型路径",
+            ui: {
+              description: "例如: /pio/models/live2d/snow_miku/model.json",
+            },
+          },
+          {
+            type: "string",
+            name: "live2dPosition",
+            label: "Live2D 位置",
+            options: [
+              { label: "左下", value: "bottom-left" },
+              { label: "右下", value: "bottom-right" },
+            ],
+            default: "bottom-left",
+          },
+          {
+            type: "number",
+            name: "live2dSize",
+            label: "Live2D 尺寸",
+            default: 200,
+          },
+          {
+            type: "string",
+            name: "live2dPrimaryColor",
+            label: "主题色",
+            ui: {
+              description: "菜单、状态条等 UI 元素的背景色",
+            },
+            default: "#00d4aa",
+          },
+          {
+            type: "number",
+            name: "live2dTransitionDuration",
+            label: "动画时长 (ms)",
+            default: 300,
+          },
+          {
+            type: "string",
+            name: "live2dTransitionType",
+            label: "动画类型",
+            options: [
+              { label: "滑动", value: "slide" },
+              { label: "淡入淡出", value: "fade" },
+            ],
+            default: "fade",
+          },
+          {
+            type: "boolean",
+            name: "live2dTipsEnable",
+            label: "启用提示消息",
+            default: true,
+          },
+          {
+            type: "string",
+            name: "live2dTipsWelcomeMessage",
+            label: "欢迎消息",
+          },
+          {
+            type: "string",
+            name: "live2dGithubLink",
+            label: "GitHub 链接",
+            ui: {
+              description: "点击 GitHub 菜单按钮跳转的链接",
+            },
+            default: "https://github.com/GinZeH",
+          },
+          {
+            type: "boolean",
+            name: "live2dResponsiveHideOnMobile",
+            label: "移动端隐藏 Live2D",
+            default: true,
+          },
         ],
       },
       {
@@ -2071,7 +1682,6 @@ export default defineConfig({
         label: "广告设置",
         path: "src/content/ad-config",
         format: "json",
-        isSingleton: true,
         ui: {
           allowedActions: {
             create: false,
@@ -2084,6 +1694,43 @@ export default defineConfig({
             name: "enable",
             label: "启用广告",
             default: false,
+          },
+          {
+            type: "string",
+            name: "adImage",
+            label: "广告图片",
+            ui: {
+              description: "广告图片路径",
+            },
+          },
+          {
+            type: "string",
+            name: "adLink",
+            label: "广告链接",
+            ui: {
+              description: "点击广告跳转的链接",
+            },
+          },
+          {
+            type: "boolean",
+            name: "adLinkExternal",
+            label: "外部链接",
+            default: true,
+          },
+          {
+            type: "boolean",
+            name: "adClosable",
+            label: "允许关闭",
+            default: true,
+          },
+          {
+            type: "number",
+            name: "adDisplayCount",
+            label: "显示次数限制",
+            ui: {
+              description: "-1为无限制",
+            },
+            default: -1,
           },
           {
             type: "string",
@@ -2196,16 +1843,27 @@ export default defineConfig({
         fields: [
           {
             type: "string",
-            name: "theme",
-            label: "代码高亮主题",
+            name: "darkTheme",
+            label: "暗色模式主题",
             options: [
+              { label: "One Dark Pro", value: "one-dark-pro" },
               { label: "Dracula", value: "dracula" },
               { label: "GitHub Dark", value: "github-dark" },
-              { label: "GitHub Light", value: "github-light" },
               { label: "Monokai", value: "monokai" },
               { label: "Nord", value: "nord" },
             ],
-            default: "github-dark",
+            default: "one-dark-pro",
+          },
+          {
+            type: "string",
+            name: "lightTheme",
+            label: "亮色模式主题",
+            options: [
+              { label: "One Light", value: "one-light" },
+              { label: "GitHub Light", value: "github-light" },
+              { label: "Nord Light", value: "nord-light" },
+            ],
+            default: "one-light",
           },
           {
             type: "boolean",
@@ -2224,6 +1882,660 @@ export default defineConfig({
             name: "enableWordWrap",
             label: "启用换行",
             default: true,
+          },
+          {
+            type: "displayOnly",
+            label: "代码折叠配置",
+            name: "codeCollapseSection",
+          },
+          {
+            type: "boolean",
+            name: "pluginCollapsibleEnable",
+            label: "启用代码折叠",
+            default: true,
+          },
+          {
+            type: "number",
+            name: "pluginCollapsibleLineThreshold",
+            label: "折叠阈值（行数）",
+            min: 1,
+            max: 100,
+            default: 15,
+          },
+          {
+            type: "number",
+            name: "pluginCollapsiblePreviewLines",
+            label: "预览行数",
+            min: 1,
+            max: 20,
+            default: 8,
+          },
+          {
+            type: "boolean",
+            name: "pluginCollapsibleDefaultCollapsed",
+            label: "默认折叠",
+            default: true,
+          },
+          {
+            type: "displayOnly",
+            label: "语言徽章",
+            name: "languageBadgeSection",
+          },
+          {
+            type: "boolean",
+            name: "pluginLanguageBadgeEnable",
+            label: "启用语言徽章",
+            default: false,
+          },
+        ],
+      },
+      {
+        name: "effectsConfig",
+        label: "特效设置",
+        path: "src/content/effects-config",
+        format: "json",
+        isSingleton: true,
+        ui: {
+          allowedActions: {
+            create: false,
+            delete: false,
+          },
+        },
+        fields: [
+          {
+            type: "displayOnly",
+            label: "樱花特效",
+            name: "sakuraSection",
+          },
+          {
+            type: "boolean",
+            name: "sakuraEnable",
+            label: "启用樱花特效",
+            default: false,
+          },
+          {
+            type: "boolean",
+            name: "sakuraSwitchable",
+            label: "允许用户切换",
+            default: true,
+          },
+          {
+            type: "number",
+            name: "sakuraNum",
+            label: "樱花数量",
+            min: 1,
+            max: 100,
+            default: 21,
+          },
+          {
+            type: "number",
+            name: "sakuraLimitTimes",
+            label: "越界限制次数（-1为无限）",
+            min: -1,
+            max: 100,
+            default: -1,
+          },
+        ],
+      },
+      {
+        name: "announcementConfig",
+        label: "公告设置",
+        path: "src/content/announcement-config",
+        format: "json",
+        isSingleton: true,
+        ui: {
+          allowedActions: {
+            create: false,
+            delete: false,
+          },
+        },
+        fields: [
+          {
+            type: "string",
+            name: "title",
+            label: "公告标题",
+            default: "公告",
+          },
+          {
+            type: "string",
+            name: "content",
+            label: "公告内容",
+            ui: {
+              component: "textarea",
+            },
+          },
+          {
+            type: "string",
+            name: "icon",
+            label: "公告图标",
+          },
+          {
+            type: "string",
+            name: "type",
+            label: "公告类型",
+            options: [
+              { label: "信息", value: "info" },
+              { label: "警告", value: "warning" },
+              { label: "成功", value: "success" },
+              { label: "错误", value: "error" },
+            ],
+            default: "info",
+          },
+          {
+            type: "boolean",
+            name: "closable",
+            label: "允许关闭",
+            default: true,
+          },
+        ],
+      },
+      {
+        name: "commentConfig",
+        label: "评论系统设置",
+        path: "src/content/comment-config",
+        format: "json",
+        isSingleton: true,
+        ui: {
+          allowedActions: {
+            create: false,
+            delete: false,
+          },
+        },
+        fields: [
+          {
+            type: "string",
+            name: "type",
+            label: "评论系统类型",
+            options: [
+              { label: "无", value: "none" },
+              { label: "Twikoo", value: "twikoo" },
+              { label: "Waline", value: "waline" },
+              { label: "Giscus", value: "giscus" },
+              { label: "Disqus", value: "disqus" },
+              { label: "Artalk", value: "artalk" },
+            ],
+            default: "none",
+          },
+          {
+            type: "displayOnly",
+            label: "Twikoo 配置",
+            name: "twikooSection",
+          },
+          {
+            type: "string",
+            name: "twikooEnvId",
+            label: "Twikoo 环境ID",
+          },
+          {
+            type: "string",
+            name: "twikooLang",
+            label: "Twikoo 语言",
+            default: "zh-CN",
+          },
+          {
+            type: "boolean",
+            name: "twikooVisitorCount",
+            label: "Twikoo 访问量统计",
+            default: true,
+          },
+          {
+            type: "displayOnly",
+            label: "Waline 配置",
+            name: "walineSection",
+          },
+          {
+            type: "string",
+            name: "walineServerURL",
+            label: "Waline 服务地址",
+          },
+          {
+            type: "string",
+            name: "walineLang",
+            label: "Waline 语言",
+            default: "zh-CN",
+          },
+          {
+            type: "string",
+            name: "walineLogin",
+            label: "Waline 登录模式",
+            options: [
+              { label: "启用", value: "enable" },
+              { label: "强制", value: "force" },
+              { label: "禁用", value: "disable" },
+            ],
+            default: "enable",
+          },
+          {
+            type: "displayOnly",
+            label: "Giscus 配置",
+            name: "giscusSection",
+          },
+          {
+            type: "string",
+            name: "giscusRepo",
+            label: "Giscus 仓库",
+            ui: {
+              description: "格式：owner/repo",
+            },
+          },
+          {
+            type: "string",
+            name: "giscusRepoId",
+            label: "Giscus 仓库ID",
+          },
+          {
+            type: "string",
+            name: "giscusCategory",
+            label: "Giscus 分类",
+          },
+          {
+            type: "string",
+            name: "giscusCategoryId",
+            label: "Giscus 分类ID",
+          },
+          {
+            type: "displayOnly",
+            label: "Disqus 配置",
+            name: "disqusSection",
+          },
+          {
+            type: "string",
+            name: "disqusShortname",
+            label: "Disqus Shortname",
+          },
+          {
+            type: "displayOnly",
+            label: "Artalk 配置",
+            name: "artalkSection",
+          },
+          {
+            type: "string",
+            name: "artalkServer",
+            label: "Artalk 服务地址",
+          },
+          {
+            type: "string",
+            name: "artalkLocale",
+            label: "Artalk 语言",
+            default: "zh-CN",
+          },
+        ],
+      },
+      {
+        name: "musicConfig",
+        label: "音乐播放器设置",
+        path: "src/content/music-config",
+        format: "json",
+        isSingleton: true,
+        ui: {
+          allowedActions: {
+            create: false,
+            delete: false,
+          },
+        },
+        fields: [
+          {
+            type: "boolean",
+            name: "showInNavbar",
+            label: "在导航栏显示",
+            default: true,
+          },
+          {
+            type: "string",
+            name: "mode",
+            label: "使用方式",
+            options: [
+              { label: "Meting API", value: "meting" },
+              { label: "本地音乐", value: "local" },
+            ],
+            default: "meting",
+          },
+          {
+            type: "number",
+            name: "volume",
+            label: "默认音量",
+            min: 0,
+            max: 1,
+            step: 0.1,
+            default: 0.7,
+          },
+          {
+            type: "string",
+            name: "playMode",
+            label: "播放模式",
+            options: [
+              { label: "列表循环", value: "list" },
+              { label: "单曲循环", value: "one" },
+              { label: "随机播放", value: "random" },
+            ],
+            default: "list",
+          },
+          {
+            type: "boolean",
+            name: "showLyrics",
+            label: "显示歌词",
+            default: true,
+          },
+          {
+            type: "displayOnly",
+            label: "Meting API 配置",
+            name: "metingSection",
+          },
+          {
+            type: "string",
+            name: "metingServer",
+            label: "音乐平台",
+            options: [
+              { label: "网易云音乐", value: "netease" },
+              { label: "QQ音乐", value: "tencent" },
+              { label: "酷狗音乐", value: "kugou" },
+              { label: "虾米音乐", value: "xiami" },
+              { label: "百度音乐", value: "baidu" },
+            ],
+            default: "netease",
+          },
+          {
+            type: "string",
+            name: "metingType",
+            label: "类型",
+            options: [
+              { label: "单曲", value: "song" },
+              { label: "歌单", value: "playlist" },
+              { label: "专辑", value: "album" },
+              { label: "搜索", value: "search" },
+              { label: "歌手", value: "artist" },
+            ],
+            default: "playlist",
+          },
+          {
+            type: "string",
+            name: "metingId",
+            label: "ID 或关键词",
+            ui: {
+              description: "歌单/专辑/单曲ID或搜索关键词",
+            },
+          },
+          {
+            type: "displayOnly",
+            label: "本地音乐",
+            name: "localSection",
+          },
+          {
+            type: "object",
+            name: "localMusic",
+            label: "本地音乐列表",
+            list: true,
+            ui: {
+              itemProps: (item: { name?: string }) => ({ label: item.name || "音乐" }),
+            },
+            fields: [
+              {
+                type: "string",
+                name: "name",
+                label: "歌曲名称",
+              },
+              {
+                type: "string",
+                name: "artist",
+                label: "歌手",
+              },
+              {
+                type: "string",
+                name: "url",
+                label: "音频文件路径",
+              },
+              {
+                type: "string",
+                name: "cover",
+                label: "封面图片路径",
+              },
+              {
+                type: "string",
+                name: "lrc",
+                label: "歌词文件路径",
+              },
+            ],
+          },
+        ],
+      },
+      {
+        name: "sidebarConfig",
+        label: "侧边栏设置",
+        path: "src/content/sidebar-config",
+        format: "json",
+        isSingleton: true,
+        ui: {
+          allowedActions: {
+            create: false,
+            delete: false,
+          },
+        },
+        fields: [
+          {
+            type: "boolean",
+            name: "enable",
+            label: "启用侧边栏",
+            default: true,
+          },
+          {
+            type: "string",
+            name: "position",
+            label: "位置",
+            options: [
+              { label: "左侧", value: "left" },
+              { label: "右侧", value: "right" },
+              { label: "双侧", value: "both" },
+            ],
+            default: "left",
+          },
+          {
+            type: "boolean",
+            name: "tabletSidebar",
+            label: "平板端显示",
+            default: true,
+          },
+          {
+            type: "boolean",
+            name: "showBothSidebarsOnPostPage",
+            label: "文章页显示双侧边栏",
+            default: false,
+          },
+          {
+            type: "displayOnly",
+            label: "左侧边栏组件",
+            name: "leftSidebarSection",
+          },
+          {
+            type: "object",
+            name: "leftSidebar",
+            label: "左侧边栏组件列表",
+            list: true,
+            ui: {
+              itemProps: (item: { component?: string }) => ({ label: item.component || "组件" }),
+            },
+            fields: [
+              {
+                type: "string",
+                name: "component",
+                label: "组件类型",
+                options: [
+                  { label: "用户资料", value: "profile" },
+                  { label: "公告栏", value: "announcement" },
+                  { label: "音乐播放器", value: "music" },
+                  { label: "文章分类", value: "categories" },
+                  { label: "标签云", value: "tags" },
+                  { label: "站点统计", value: "stats" },
+                  { label: "站点信息", value: "siteInfo" },
+                  { label: "文章日历", value: "calendar" },
+                  { label: "广告栏", value: "advertisement" },
+                ],
+              },
+              {
+                type: "number",
+                name: "order",
+                label: "排序",
+                default: 0,
+              },
+            ],
+          },
+          {
+            type: "displayOnly",
+            label: "右侧边栏组件",
+            name: "rightSidebarSection",
+          },
+          {
+            type: "object",
+            name: "rightSidebar",
+            label: "右侧边栏组件列表",
+            list: true,
+            ui: {
+              itemProps: (item: { component?: string }) => ({ label: item.component || "组件" }),
+            },
+            fields: [
+              {
+                type: "string",
+                name: "component",
+                label: "组件类型",
+                options: [
+                  { label: "用户资料", value: "profile" },
+                  { label: "公告栏", value: "announcement" },
+                  { label: "音乐播放器", value: "music" },
+                  { label: "文章分类", value: "categories" },
+                  { label: "标签云", value: "tags" },
+                  { label: "站点统计", value: "stats" },
+                  { label: "站点信息", value: "siteInfo" },
+                  { label: "文章日历", value: "calendar" },
+                  { label: "文章目录", value: "sidebarToc" },
+                  { label: "广告栏", value: "advertisement" },
+                ],
+              },
+              {
+                type: "number",
+                name: "order",
+                label: "排序",
+                default: 0,
+              },
+            ],
+          },
+        ],
+      },
+      {
+        name: "sponsorConfig",
+        label: "打赏设置",
+        path: "src/content/sponsor-config",
+        format: "json",
+        isSingleton: true,
+        ui: {
+          allowedActions: {
+            create: false,
+            delete: false,
+          },
+        },
+        fields: [
+          {
+            type: "string",
+            name: "title",
+            label: "页面标题",
+            default: "打赏",
+          },
+          {
+            type: "string",
+            name: "description",
+            label: "页面描述",
+            ui: {
+              component: "textarea",
+            },
+          },
+          {
+            type: "string",
+            name: "usage",
+            label: "打赏用途",
+            ui: {
+              component: "textarea",
+            },
+          },
+          {
+            type: "boolean",
+            name: "showSponsorsList",
+            label: "显示打赏者列表",
+            default: true,
+          },
+          {
+            type: "boolean",
+            name: "showComment",
+            label: "显示评论区",
+            default: true,
+          },
+          {
+            type: "boolean",
+            name: "showButtonInPost",
+            label: "文章底部显示打赏按钮",
+            default: true,
+          },
+          {
+            type: "object",
+            name: "sponsorMethods",
+            label: "打赏方式列表",
+            list: true,
+            ui: {
+              itemProps: (item: { name?: string }) => ({ label: item.name || "打赏方式" }),
+            },
+            fields: [
+              {
+                type: "string",
+                name: "name",
+                label: "打赏方式名称",
+              },
+              {
+                type: "string",
+                name: "icon",
+                label: "图标",
+              },
+              {
+                type: "image",
+                name: "qrCode",
+                label: "收款码",
+              },
+              {
+                type: "string",
+                name: "link",
+                label: "打赏链接",
+              },
+              {
+                type: "string",
+                name: "description",
+                label: "描述",
+              },
+              {
+                type: "boolean",
+                name: "enabled",
+                label: "启用",
+                default: true,
+              },
+            ],
+          },
+        ],
+      },
+      {
+        name: "galleryConfig",
+        label: "相册设置",
+        path: "src/content/gallery-config",
+        format: "json",
+        isSingleton: true,
+        ui: {
+          allowedActions: {
+            create: false,
+            delete: false,
+          },
+        },
+        fields: [
+          {
+            type: "number",
+            name: "columnWidth",
+            label: "瀑布流最小列宽（px）",
+            min: 200,
+            max: 400,
+            default: 240,
           },
         ],
       },

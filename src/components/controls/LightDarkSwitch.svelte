@@ -1,6 +1,6 @@
 <script lang="ts">
 import I18nKey from "@i18n/i18nKey";
-import { i18n } from "@i18n/translation";
+import { i18n } from "@/i18n/translation";
 import { onMount } from "svelte";
 import DropdownItem from "@/components/common/DropdownItem.svelte";
 import DropdownPanel from "@/components/common/DropdownPanel.svelte";
@@ -12,6 +12,9 @@ import {
 	getStoredTheme,
 	setTheme,
 } from "@/utils/setting-utils";
+import { userPermissions } from "@/config";
+
+const allowUserChangeMode = userPermissions.allowUserChangeMode;
 
 // Define Swup type for window object
 interface SwupHooks {
@@ -114,6 +117,7 @@ onMount(() => {
 });
 </script>
 
+{#if allowUserChangeMode}
 <div class="relative z-50">
     <button aria-label="Light/Dark Mode" aria-haspopup="menu" class="relative btn-plain scale-animation rounded-lg h-11 w-11 active:scale-90" id="scheme-switch">
         <div class="absolute inset-0 flex items-center justify-center" class:opacity-0={displayedMode !== LIGHT_MODE}>
@@ -155,3 +159,4 @@ onMount(() => {
         </DropdownPanel>
     </div>
 </div>
+{/if}

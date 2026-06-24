@@ -1,0 +1,11 @@
+{
+  "showInNavbar": false,
+  "mode": "meting",
+  "volume": 0.7,
+  "playMode": "list",
+  "showLyrics": true,
+  "metingServer": "netease",
+  "metingType": "playlist",
+  "metingId": "",
+  "localMusic": []
+}

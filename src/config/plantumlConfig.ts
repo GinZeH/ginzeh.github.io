@@ -1,4 +1,5 @@
 import type { PlantUMLConfig } from "../types/config";
+import plantumlSettings from "../content/plantuml-config/plantuml.json";
 
 /**
  * PlantUML 图表渲染配置
@@ -14,14 +15,14 @@ export const plantumlConfig: PlantUMLConfig = {
 	 * 是否启用 PlantUML 渲染能力。
 	 * 关闭时 `plantuml` 代码块退化为普通代码高亮，由 Expressive Code 处理。
 	 */
-	enable: true,
+	enable: plantumlSettings.enable ?? true,
 
 	/**
 	 * PlantUML 服务器地址（不含尾部斜杠也可，会自动归一化）。
 	 * 默认使用官方公共服务器；敏感内容请部署自建服务器（例如
 	 * `plantuml/plantuml-server` Docker 镜像），并把此字段替换为自建地址。
 	 */
-	server: "https://www.plantuml.com/plantuml",
+	server: plantumlSettings.serverUrl ?? "https://www.plantuml.com/plantuml",
 
 	/**
 	 * 亮色模式下注入到 PlantUML 源码的主题名（对应 `!theme <name>`）。

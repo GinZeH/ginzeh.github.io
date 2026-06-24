@@ -1,0 +1,26 @@
+{
+  "title": "打赏",
+  "description": "如果你喜欢我的文章，可以请我喝杯咖啡",
+  "usage": "用于支持博客运营和内容创作",
+  "showSponsorsList": true,
+  "showComment": true,
+  "showButtonInPost": true,
+  "sponsorMethods": [
+    {
+      "name": "微信",
+      "icon": "wechat",
+      "qrCode": "",
+      "link": "",
+      "description": "微信支付",
+      "enabled": true
+    },
+    {
+      "name": "支付宝",
+      "icon": "alipay",
+      "qrCode": "",
+      "link": "",
+      "description": "支付宝",
+      "enabled": true
+    }
+  ]
+}

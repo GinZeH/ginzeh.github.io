@@ -40,7 +40,7 @@ import {
 } from "@utils/setting-utils";
 import { onMount } from "svelte";
 import Icon from "@/components/common/Icon.svelte";
-import { backgroundWallpaper, sakuraConfig, siteConfig } from "@/config";
+import { backgroundWallpaper, sakuraConfig, siteConfig, userPermissions } from "@/config";
 import type { WALLPAPER_MODE } from "@/types/config";
 
 type OverlaySliderItem = {
@@ -55,6 +55,13 @@ type OverlaySliderItem = {
 	value: number;
 	onValueChange: (value: number) => void;
 };
+
+// 用户权限控制
+const allowUserChangeTheme = userPermissions.allowUserChangeTheme;
+const allowUserChangeWallpaper = userPermissions.allowUserChangeWallpaper;
+const allowUserChangeMode = userPermissions.allowUserChangeMode;
+const allowUserChangeLayout = userPermissions.allowUserChangeLayout;
+const allowUserChangeEffects = userPermissions.allowUserChangeEffects;
 
 let hue = $state(getHue());
 const defaultHue = getDefaultHue();
@@ -89,54 +96,57 @@ const defaultOverlayBlur = getDefaultOverlayBlur();
 let overlayCardOpacity = $state(getDefaultOverlayCardOpacity());
 const defaultOverlayCardOpacity = getDefaultOverlayCardOpacity();
 
-const isWallpaperSwitchable = (backgroundWallpaper.switchable ?? true) && (siteConfig.displaySettings?.showWallpaperMode ?? true);
-const allowLayoutSwitch = siteConfig.postListLayout.allowSwitch;
+const isWallpaperSwitchable = allowUserChangeWallpaper && (backgroundWallpaper.switchable ?? true);
+const allowLayoutSwitch = allowUserChangeLayout && siteConfig.postListLayout.allowSwitch;
 let effectiveDefaultLayout = $derived(
 	isMobileWidth ? mobileDefaultLayout : defaultLayout,
 );
-const showThemeColor = !siteConfig.themeColor.fixed;
+const showThemeColor = allowUserChangeTheme && !siteConfig.themeColor.fixed;
 // 是否允许用户切换水波纹动画（只看 switchable 配置）
 const isWavesSwitchable =
-	backgroundWallpaper.common?.waves?.switchable ?? false;
+	allowUserChangeEffects && (backgroundWallpaper.common?.waves?.switchable ?? false);
 // 是否允许用户切换渐变过渡（只看 switchable 配置）
 const isGradientSwitchable =
-	backgroundWallpaper.common?.gradient?.switchable ?? false;
+	allowUserChangeEffects && (backgroundWallpaper.common?.gradient?.switchable ?? false);
 // 检查是否启用横幅标题配置
 const isBannerTitleEnabled =
 	backgroundWallpaper.common?.homeText?.enable ?? false;
 // 是否允许用户切换横幅标题
 const isBannerTitleSwitchable =
+	allowUserChangeEffects &&
 	isBannerTitleEnabled &&
 	(backgroundWallpaper.common?.homeText?.switchable ?? false);
 // 是否允许用户切换横幅轮播
 const isBannerCarouselSwitchable =
-	backgroundWallpaper.banner?.carousel?.switchable ?? false;
+	allowUserChangeEffects && (backgroundWallpaper.banner?.carousel?.switchable ?? false);
 // 是否允许用户切换樱花特效
-const isSakuraSwitchable = sakuraConfig?.switchable ?? false;
+const isSakuraSwitchable = allowUserChangeEffects && (sakuraConfig?.switchable ?? false);
 // 是否有任何横幅设置可显示（后续添加新设置时在此处添加条件）
 const hasBannerSettings =
-	(siteConfig.displaySettings?.showWallpaperSettings ?? true) && (
 	isWavesSwitchable ||
 	isGradientSwitchable ||
 	isBannerTitleSwitchable ||
-	isBannerCarouselSwitchable
-);
+	isBannerCarouselSwitchable;
 const overlaySwitchableConfig =
 	backgroundWallpaper.overlay?.switchable ?? false;
 const isOverlaySettingsSwitchable =
-	typeof overlaySwitchableConfig === "boolean" ? overlaySwitchableConfig : true;
+	allowUserChangeWallpaper &&
+	(typeof overlaySwitchableConfig === "boolean" ? overlaySwitchableConfig : true);
 const isOverlayOpacitySwitchable =
-	typeof overlaySwitchableConfig === "boolean"
+	allowUserChangeWallpaper &&
+	(typeof overlaySwitchableConfig === "boolean"
 		? overlaySwitchableConfig
-		: (overlaySwitchableConfig.opacity ?? false);
+		: (overlaySwitchableConfig.opacity ?? false));
 const isOverlayBlurSwitchable =
-	typeof overlaySwitchableConfig === "boolean"
+	allowUserChangeWallpaper &&
+	(typeof overlaySwitchableConfig === "boolean"
 		? overlaySwitchableConfig
-		: (overlaySwitchableConfig.blur ?? false);
+		: (overlaySwitchableConfig.blur ?? false));
 const isOverlayCardOpacitySwitchable =
-	typeof overlaySwitchableConfig === "boolean"
+	allowUserChangeWallpaper &&
+	(typeof overlaySwitchableConfig === "boolean"
 		? overlaySwitchableConfig
-		: (overlaySwitchableConfig.cardOpacity ?? false);
+		: (overlaySwitchableConfig.cardOpacity ?? false));
 const hasOverlaySettings =
 	isOverlaySettingsSwitchable &&
 	(isOverlayOpacitySwitchable ||

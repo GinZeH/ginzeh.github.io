@@ -1,5 +1,5 @@
 {
-  "mode": "banner",
+  "mode": "none",
   "switchable": true,
   "opacity": 0.8,
   "blur": 10,
@@ -12,12 +12,12 @@
   "gradientMobile": true,
   "gradientHeight": "15vh",
   "gradientSwitchable": true,
-  "carouselEnable": false,
+  "carouselEnable": true,
   "carouselInterval": 5000,
   "carouselSwitchable": false,
   "allowUserChangeTheme": false,
   "allowUserChangeWallpaper": false,
   "allowUserChangeMode": true,
-  "allowUserChangeLayout": false,
-  "allowUserChangeEffects": false
+  "allowUserChangeLayout": true,
+  "allowUserChangeEffects": true
 }

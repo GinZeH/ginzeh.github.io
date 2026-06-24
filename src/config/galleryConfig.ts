@@ -2,7 +2,7 @@ import type { GalleryConfig } from "@/types/config";
 import gallerySettings from "../content/gallery-settings/gallery.json";
 
 export const galleryConfig: GalleryConfig = {
-	albums: gallerySettings.albums || [
+	albums: gallerySettings.albums ?? [
 		{
 			id: "firefly-2026",
 			name: "可爱流萤",
@@ -22,5 +22,5 @@ export const galleryConfig: GalleryConfig = {
 			passwordHint: "示例密码123456",
 		},
 	],
-	columnWidth: gallerySettings.columnWidth || 240,
+	columnWidth: gallerySettings.columnWidth ?? 240,
 };

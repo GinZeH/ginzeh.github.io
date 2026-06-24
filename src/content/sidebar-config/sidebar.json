@@ -1,0 +1,34 @@
+{
+  "enable": true,
+  "position": "left",
+  "tabletSidebar": true,
+  "showBothSidebarsOnPostPage": false,
+  "leftSidebar": [
+    {
+      "component": "profile",
+      "order": 1
+    },
+    {
+      "component": "announcement",
+      "order": 2
+    },
+    {
+      "component": "categories",
+      "order": 4
+    },
+    {
+      "component": "tags",
+      "order": 5
+    }
+  ],
+  "rightSidebar": [
+    {
+      "component": "sidebarToc",
+      "order": 1
+    },
+    {
+      "component": "stats",
+      "order": 2
+    }
+  ]
+}

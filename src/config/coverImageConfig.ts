@@ -1,4 +1,5 @@
 import type { CoverImageConfig } from "../types/config";
+import coverImageSettings from "../content/cover-image-config/coverImage.json";
 
 /**
  * 文章封面图配置
@@ -21,15 +22,15 @@ export const coverImageConfig: CoverImageConfig = {
 
 	randomCoverImage: {
 		// 随机封面图功能开关
-		enable: false,
+		enable: coverImageSettings.enableRandomCover ?? false,
 		// 封面图API列表
-		apis: [
+		apis: coverImageSettings.randomCoverApi ? [coverImageSettings.randomCoverApi] : [
 			"https://t.alcy.cc/pc",
 			"https://www.dmoe.cc/random.php",
 			"https://uapis.cn/api/v1/random/image?category=acg&type=pc",
 		],
 		// API失败时的回退图片路径（相对于src目录或以/开头的public目录路径）
-		fallback: "assets/images/cover.avif",
+		fallback: coverImageSettings.defaultCover ?? "assets/images/cover.avif",
 		// 是否显示加载动画
 		showLoading: false,
 	},

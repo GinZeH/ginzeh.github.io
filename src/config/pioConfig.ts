@@ -1,16 +1,17 @@
 import type { SpineModelConfig } from "../types/config";
+import pioSettings from "../content/pio-settings/pio.json";
 
 // Spine 看板娘配置
 export const spineModelConfig: SpineModelConfig = {
 	// Spine 看板娘开关
-	enable: false,
+	enable: pioSettings.spineEnable ?? false,
 
 	// Spine模型配置
 	model: {
 		// Spine模型文件路径
-		path: "/pio/models/spine/firefly/1310.json",
+		path: pioSettings.spineModelPath ?? "/pio/models/spine/firefly/1310.json",
 		// 模型缩放比例
-		scale: 1.0,
+		scale: pioSettings.spineScale ?? 1.0,
 		// X轴偏移
 		x: 0,
 		// Y轴偏移
@@ -20,7 +21,7 @@ export const spineModelConfig: SpineModelConfig = {
 	// 位置配置
 	position: {
 		// 显示位置 bottom-left，bottom-right，top-left，top-right，注意：在右下角可能会挡住返回顶部按钮
-		corner: "bottom-left",
+		corner: (pioSettings.spinePositionCorner as "bottom-left" | "bottom-right" | "top-left" | "top-right") ?? "bottom-left",
 		// 距离边缘0px
 		offsetX: 0,
 		// 距离下边缘0px
@@ -30,17 +31,17 @@ export const spineModelConfig: SpineModelConfig = {
 	// 尺寸配置
 	size: {
 		// 容器宽度
-		width: 135,
+		width: pioSettings.spineSizeWidth ?? 135,
 		// 容器高度
-		height: 165,
+		height: pioSettings.spineSizeHeight ?? 165,
 	},
 
 	// 交互配置
 	interactive: {
 		// 交互功能开关
-		enabled: true,
+		enabled: pioSettings.spineInteractiveEnabled ?? true,
 		// 点击时随机播放的动画列表
-		clickAnimations: [
+		clickAnimations: pioSettings.spineInteractiveClickAnimations ?? [
 			"emoji_0",
 			"emoji_1",
 			"emoji_2",
@@ -49,7 +50,7 @@ export const spineModelConfig: SpineModelConfig = {
 			"emoji_5",
 		],
 		// 点击时随机显示的文字消息
-		clickMessages: [
+		clickMessages: pioSettings.spineInteractiveClickMessages ?? [
 			"你好呀！我是流萤~",
 			"今天也要加油哦！✨",
 			"想要一起去看星空吗？🌟",
@@ -70,7 +71,7 @@ export const spineModelConfig: SpineModelConfig = {
 	// 响应式配置
 	responsive: {
 		// 在移动端隐藏
-		hideOnMobile: true,
+		hideOnMobile: pioSettings.spineResponsiveHideOnMobile ?? true,
 		// 移动端断点
 		mobileBreakpoint: 768,
 	},
@@ -85,22 +86,27 @@ export const spineModelConfig: SpineModelConfig = {
 // Live2D 看板娘配置 (使用 l2d-widget)
 export const live2dWidgetConfig = {
 	// Live2D 看板娘开关
-	enable: false,
+	enable: pioSettings.live2dEnable ?? false,
 	// 模型配置，支持单个模型或数组（多模型切换）
 	model: {
 		// Live2D模型文件路径
-		path: "/pio/models/live2d/snow_miku/model.json",
+		path: pioSettings.live2dModelPath ?? "/pio/models/live2d/snow_miku/model.json",
 	},
 	// 显示位置：bottom-left 或 bottom-right
-	position: "bottom-left" as const,
+	position: (pioSettings.live2dPosition as "bottom-left" | "bottom-right") ?? "bottom-left",
 	// 画布尺寸（px）
-	size: { width: 200, height: 200 },
+	size: { 
+		width: pioSettings.live2dSize ?? 200, 
+		height: pioSettings.live2dSize ?? 200 
+	},
 	// 主题色，用于菜单、状态条等 UI 元素的背景色，默认 'rgba(96,165,250,0.9)'
-	primaryColor: "var(--l2d-msg-bg)",
+	primaryColor: pioSettings.live2dPrimaryColor ?? "var(--l2d-msg-bg)",
 	// 入场/退场动画时长（ms）
-	transitionDuration: 1500,
+	transitionDuration: pioSettings.live2dTransitionDuration ?? 1500,
 	// 入场/退场动画类型
-	transitionType: "slide" as const,
+	transitionType: (pioSettings.live2dTransitionType as "slide" | "fade") ?? "slide",
+	// GitHub 链接
+	githubLink: pioSettings.live2dGithubLink ?? "https://github.com/GinZeH",
 	// 菜单配置
 	menus: {
 		// 完全替换默认菜单项
@@ -131,8 +137,8 @@ export const live2dWidgetConfig = {
 	},
 	// 提示气泡配置
 	tips: {
-		welcomeMessage: ["你好！我是Miku~", "欢迎来到我的世界！"],
-		messages: [
+		welcomeMessage: pioSettings.live2dTipsWelcomeMessage ? [pioSettings.live2dTipsWelcomeMessage] : ["你好！我是Miku~", "欢迎来到我的世界！"],
+		messages: pioSettings.live2dTipsMessages ?? [
 			"有什么需要帮助的吗？",
 			"今天天气真不错呢！",
 			"要不要一起玩游戏？",
@@ -144,7 +150,7 @@ export const live2dWidgetConfig = {
 	// 响应式配置
 	responsive: {
 		// 在移动端隐藏
-		hideOnMobile: true,
+		hideOnMobile: pioSettings.live2dResponsiveHideOnMobile ?? true,
 		// 移动端断点
 		mobileBreakpoint: 768,
 	},

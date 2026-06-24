@@ -16,6 +16,7 @@ interface Props {
 		primaryColor?: string;
 		transitionDuration?: number;
 		transitionType?: "slide" | "fade";
+		githubLink?: string;
 		menus?: {
 			items?: MenuItem[];
 			extraItems?: MenuItem[];
@@ -68,6 +69,7 @@ function serializeMenus(menus: Props["config"]["menus"]) {
 	data-primary-color={config.primaryColor || ""}
 	data-transition-duration={config.transitionDuration?.toString() || ""}
 	data-transition-type={config.transitionType || ""}
+	data-github-link={config.githubLink || "https://github.com/GinZeH"}
 	data-menus={JSON.stringify(serializeMenus(config.menus))}
 	data-tips={JSON.stringify(config.tips || {})}
 	data-responsive={JSON.stringify(config.responsive || {})}
@@ -76,14 +78,6 @@ function serializeMenus(menus: Props["config"]["menus"]) {
 
 <script>
 	import { createWidget } from "l2d-widget";
-
-	// 菜单动作映射
-	const menuActions: Record<string, (widget: any) => void> = {
-		home: () => (window.location.href = "/"),
-		scrollToTop: () => window.scrollTo({ top: 0, behavior: "smooth" }),
-		sleep: (widget) => widget.sleep(),
-		github: () => window.open("https://github.com/CuteLeaf/Firefly", "_blank"),
-	};
 
 	function initWidget() {
 		const container = document.getElementById("l2d-widget-container");
@@ -98,9 +92,18 @@ function serializeMenus(menus: Props["config"]["menus"]) {
 				? parseInt(container.dataset.transitionDuration)
 				: undefined;
 			const transitionType = container.dataset.transitionType || undefined;
+			const githubLink = container.dataset.githubLink || "https://github.com/GinZeH";
 			const menus = JSON.parse(container.dataset.menus || "{}");
 			const tips = JSON.parse(container.dataset.tips || "{}");
 			const responsive = JSON.parse(container.dataset.responsive || "{}");
+
+			// 菜单动作映射 - 使用配置中的 GitHub 链接
+			const menuActions: Record<string, (widget: any) => void> = {
+				home: () => (window.location.href = "/"),
+				scrollToTop: () => window.scrollTo({ top: 0, behavior: "smooth" }),
+				sleep: (widget) => widget.sleep(),
+				github: () => window.open(githubLink, "_blank"),
+			};
 
 			// 响应式检查：移动端隐藏
 			if (responsive.hideOnMobile) {

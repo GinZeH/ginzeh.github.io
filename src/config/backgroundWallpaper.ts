@@ -24,13 +24,13 @@ export const backgroundWallpaper: BackgroundWallpaperConfig = {
 		],
 	},
 	common: {
-		dimOpacity: wallpaperSettings.dimOpacity || 0.2,
+		dimOpacity: wallpaperSettings.dimOpacity ?? 0.2,
 		homeText: {
 			enable: true,
 			switchable: true,
-			title: bannerSettings.title || "Lovely firefly!",
-			titleSize: bannerSettings.titleSize || "3.8rem",
-			subtitle: bannerSettings.subtitle || [
+			title: bannerSettings.title ?? "Lovely firefly!",
+			titleSize: bannerSettings.titleSize ?? "3.8rem",
+			subtitle: bannerSettings.subtitle ?? [
 				"In Reddened Chrysalis, I Once Rest",
 				"From Shattered Sky, I Free Fall",
 				"Amidst Silenced Stars, I Deep Sleep",
@@ -38,7 +38,7 @@ export const backgroundWallpaper: BackgroundWallpaperConfig = {
 				"From Undreamt Night, I Thence Shine",
 				"In Finalized Morrow, I Full Bloom",
 			],
-			subtitleSize: bannerSettings.subtitleSize || "1.5rem",
+			subtitleSize: bannerSettings.subtitleSize ?? "1.5rem",
 			typewriter: {
 				enable: bannerSettings.typewriterEnable ?? true,
 				speed: bannerSettings.typewriterSpeed ?? 100,
@@ -63,7 +63,7 @@ export const backgroundWallpaper: BackgroundWallpaperConfig = {
 				desktop: wallpaperSettings.gradientDesktop ?? true,
 				mobile: wallpaperSettings.gradientMobile ?? true,
 			},
-			height: wallpaperSettings.gradientHeight || "15vh",
+			height: wallpaperSettings.gradientHeight ?? "15vh",
 			switchable: wallpaperSettings.gradientSwitchable ?? true,
 		},
 	},
@@ -71,7 +71,7 @@ export const backgroundWallpaper: BackgroundWallpaperConfig = {
 		position: "0% 20%",
 		carousel: {
 			enable: wallpaperSettings.carouselEnable ?? false,
-			interval: wallpaperSettings.carouselInterval || 5000,
+			interval: wallpaperSettings.carouselInterval ?? 5000,
 			switchable: wallpaperSettings.carouselSwitchable ?? false,
 		},
 	},
@@ -82,9 +82,9 @@ export const backgroundWallpaper: BackgroundWallpaperConfig = {
 			cardOpacity: true,
 		},
 		zIndex: -1,
-		opacity: wallpaperSettings.opacity || 0.8,
-		blur: wallpaperSettings.blur || 10,
-		cardOpacity: wallpaperSettings.cardOpacity || 0.5,
+		opacity: wallpaperSettings.opacity ?? 0.8,
+		blur: wallpaperSettings.blur ?? 10,
+		cardOpacity: wallpaperSettings.cardOpacity ?? 0.5,
 	},
 	fullscreen: {
 		position: "center",
