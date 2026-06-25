@@ -2,11 +2,16 @@ import type { BackgroundWallpaperConfig } from "@/types/config";
 import bannerSettings from "../content/banner-settings/banner.json";
 import wallpaperSettings from "../content/wallpaper-settings/wallpaper.json";
 
+const customBg = bannerSettings.customBackground;
+
 export const backgroundWallpaper: BackgroundWallpaperConfig = {
 	mode: (wallpaperSettings.mode as "banner" | "fullscreen" | "overlay" | "none") ?? "banner",
 	switchable: wallpaperSettings.switchable ?? true,
-	src: {
-		desktop: [
+	src: customBg ? {
+		desktop: [customBg],
+		mobile: [customBg],
+	} : {
+		desktop: wallpaperSettings.desktopWallpapers ?? [
 			"assets/images/DesktopWallpaper/d1.avif",
 			"assets/images/DesktopWallpaper/d2.avif",
 			"assets/images/DesktopWallpaper/d3.avif",
@@ -14,7 +19,7 @@ export const backgroundWallpaper: BackgroundWallpaperConfig = {
 			"assets/images/DesktopWallpaper/d5.avif",
 			"assets/images/DesktopWallpaper/d6.avif",
 		],
-		mobile: [
+		mobile: wallpaperSettings.mobileWallpapers ?? [
 			"assets/images/MobileWallpaper/m1.avif",
 			"assets/images/MobileWallpaper/m2.avif",
 			"assets/images/MobileWallpaper/m3.avif",

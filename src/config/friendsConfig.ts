@@ -14,8 +14,8 @@ export const friendsConfig: FriendLink[] = friendsData.friends.map((friend) => (
 	imgurl: friend.imgurl,
 	desc: friend.desc,
 	siteurl: friend.siteurl,
-	tags: friend.tags,
-	weight: friend.weight,
+	tags: (friend as any).tags ?? [],
+	weight: (friend as any).weight ?? 0,
 	enabled: friend.enabled,
 }));
 

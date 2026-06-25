@@ -1,5 +1,5 @@
 {
-  "mode": "none",
+  "mode": "fullscreen",
   "switchable": true,
   "opacity": 0.8,
   "blur": 10,
@@ -15,8 +15,21 @@
   "carouselEnable": true,
   "carouselInterval": 5000,
   "carouselSwitchable": false,
-  "allowUserChangeTheme": false,
-  "allowUserChangeWallpaper": false,
+  "desktopWallpapers": [
+    "/assets/images/DesktopWallpaper/d1.avif",
+    "/assets/images/DesktopWallpaper/d2.avif",
+    "/assets/images/DesktopWallpaper/d3.avif",
+    "/assets/images/DesktopWallpaper/d4.avif"
+  ],
+  "mobileWallpapers": [
+    "/assets/images/MobileWallpaper/b1.avif",
+    "/assets/images/MobileWallpaper/b2.avif",
+    "/assets/images/MobileWallpaper/b3.avif",
+    "/assets/images/MobileWallpaper/b4.avif",
+    "/assets/images/MobileWallpaper/b5.avif"
+  ],
+  "allowUserChangeTheme": true,
+  "allowUserChangeWallpaper": true,
   "allowUserChangeMode": true,
   "allowUserChangeLayout": true,
   "allowUserChangeEffects": true

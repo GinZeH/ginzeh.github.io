@@ -23,7 +23,7 @@
   "generateOgImages": false,
   "paginationPostsPerPage": 10,
   "pageFriends": true,
-  "pageGuestbook": false,
+  "pageGuestbook": true,
   "pageBangumi": false,
   "bangumiSubjectId": "",
   "bangumiApi": "https://api.bgm.tv",

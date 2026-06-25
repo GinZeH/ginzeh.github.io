@@ -21,6 +21,14 @@ export default defineConfig({
       mediaRoot: "",
       publicFolder: "public",
     },
+    accept: [
+      "image/jpeg",
+      "image/png",
+      "image/gif",
+      "image/webp",
+      "image/avif",
+      "image/svg+xml",
+    ],
   },
   schema: {
     collections: [
@@ -277,11 +285,45 @@ export default defineConfig({
         name: "spec",
         label: "特殊页面",
         path: "src/content/spec",
+        format: "md",
         ui: {
           router: ({ document }) => {
             const filename = document._sys.filename.replace(/\.(md|mdx)$/, "");
             if (filename === "about") return "/about";
             if (filename === "guestbook") return "/guestbook";
+            return `/${filename}`;
+          },
+        },
+        fields: [
+          {
+            type: "string",
+            name: "title",
+            label: "标题",
+            isTitle: true,
+            required: true,
+          },
+          {
+            type: "string",
+            name: "description",
+            label: "描述",
+          },
+          {
+            type: "rich-text",
+            name: "body",
+            label: "内容",
+            isBody: true,
+          },
+        ],
+      },
+      {
+        name: "specMdx",
+        label: "特殊页面 (MDX)",
+        path: "src/content/spec",
+        match: "**/*.mdx",
+        format: "mdx",
+        ui: {
+          router: ({ document }) => {
+            const filename = document._sys.filename.replace(/\.(md|mdx)$/, "");
             if (filename === "friends") return "/friends";
             return `/${filename}`;
           },
@@ -293,6 +335,11 @@ export default defineConfig({
             label: "标题",
             isTitle: true,
             required: true,
+          },
+          {
+            type: "string",
+            name: "description",
+            label: "描述",
           },
           {
             type: "rich-text",
@@ -1308,6 +1355,32 @@ export default defineConfig({
             name: "carouselSwitchable",
             label: "轮播可切换",
             default: false,
+          },
+          {
+            type: "string",
+            label: "壁纸列表",
+            name: "wallpaperListSection",
+            ui: {
+              component: "label",
+            },
+          },
+          {
+            type: "image",
+            name: "desktopWallpapers",
+            label: "桌面端壁纸列表",
+            list: true,
+            ui: {
+              description: "添加或删除桌面端壁纸图片，建议尺寸 1920×800",
+            },
+          },
+          {
+            type: "image",
+            name: "mobileWallpapers",
+            label: "移动端壁纸列表",
+            list: true,
+            ui: {
+              description: "添加或删除移动端壁纸图片，建议尺寸 750×1334",
+            },
           },
           {
             type: "string",
